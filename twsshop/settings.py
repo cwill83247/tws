@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CSRF_TRUSTED_ORIGINS = ["https://8000-cwill83247-tws-t9qu1ypeu3s.ws-eu88.gitpod.io", "https://www.8000-cwill83247-tws-t9qu1ypeu3s.ws-eu88.gitpod.io"]
+
 # Application definition
 
 INSTALLED_APPS = [
