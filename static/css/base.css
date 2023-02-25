@@ -1,0 +1,17 @@
+
+.main-hero {
+    background: url('/media/mainheroimage.jpg');
+    background-size: cover;
+    display: flex;
+    height:600px;;
+    width:100%;
+    
+    
+}
+
+.sub-hero {
+    background: url('/media/helmet.jpg');
+    background-size: cover;
+    transform-origin: 0px 0px;
+    /*transform: scale(0.777778); */
+}
