@@ -1,17 +1,59 @@
 
-.main-hero {
-    background: url('/media/mainheroimage.jpg');
+
+
+
+.main-hero {                                                /* NEEDS MEDIA QUERIES*/
+       
+        max-width:1249px;
+        height:434px;
+        background-image: url('/media/mainheroimage2.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;        
+        border-right: 0.2rem solid white;
+       
+        
+      
+    }    
+
+.sub-hero {                                     /* NEEDS MEDIA QUERIES*/
+    max-width:549px;
+    background: url('/media/helmet.jpg');
     background-size: cover;
-    display: flex;
-    height:600px;;
-    width:100%;
-    
+    transform-origin: 0px 0px;  
+    border-right: 0.2rem solid white;  
     
 }
 
-.sub-hero {
+.showcase-1 {                                     /* NEEDS MEDIA QUERIES*/
     background: url('/media/helmet.jpg');
     background-size: cover;
-    transform-origin: 0px 0px;
-    /*transform: scale(0.777778); */
+    transform-origin: 0px 0px;   
+    height:400px;
+    max-width:600px;
+    border-top: 0.2rem solid white;  
+    border-right: 0.2rem solid white;  
 }
+
+.showcase-2 {                                     /* NEEDS MEDIA QUERIES*/
+    background: url('/media/helmet.jpg');
+    background-size: cover;
+    transform-origin: 0px 0px;   
+    height:400px;
+    max-width:600px;
+    border-top: 0.2rem solid white;  
+    border-right: 0.2rem solid white;  
+}
+
+.showcase-3 {                                     /* NEEDS MEDIA QUERIES*/
+    background: url('/media/helmet.jpg');
+    background-size: cover;
+    transform-origin: 0px 0px;   
+    height:400px;
+    max-width:600px;
+    border-top: 0.2rem solid white;  
+    border-right: 0.2rem solid white;  
+}
+
+
+
+
