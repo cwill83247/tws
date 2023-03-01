@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'home',
     'shop.apps.ShopConfig',
-    'shoppingbag.apps.CartConfig',
+    'shoppingbag.apps.ShoppingbagConfig',
 ]
 
 MIDDLEWARE = [
@@ -104,7 +104,7 @@ WSGI_APPLICATION = 'twsshop.wsgi.application'
 
 # Shopping bag
 
-SHOPPINGBAG_SESSION_ID ='twsshoppingbag'
+SHOPPINGBAG_SESSION_ID = 'twsshoppingbag'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
