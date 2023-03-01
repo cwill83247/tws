@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content%}
+<div class="container">
+<h1>prpdcut list .html page</h1>
+<div class="row row-cols-4 row-cols-md-4 g-4">
+  {% for product in products %}       
+  <div class="col">
+    <a href="{% url 'product_detail' product.id %}">
+    <div class="card">
+      <img class="card-img-top" alt="..." src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}"> 
+      <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">Rating:{{ product.customer_rating }}<br>
+          £{{ product.price }}</p>
+          <a href="{% url 'product_detail' product.id %}">More Info - Prpdcuts Details</a>
+        </a>
+      </div>
+    </div> 
+  </div>         
+         {% endfor %}
+  </div>
+</div>
+  {% endblock %}

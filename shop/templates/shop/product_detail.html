@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content%}
+<div class="container">
+<h1>Product details.html page</h1>
+<div class="row">  
+  <div class="col">
+    <div class="card">
+      <div class="image-container my-5"><img class="card-img-top" alt="..." src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}"> 
+        </div>div>
+      <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">Rating:{{ product.customer_rating }}<br>
+          £{{ product.price }}</p>
+          {{ product.description }}
+
+      </div>
+    </div> 
+  </div> 
+        <h2>Select a Size</h2>
+        <h2>Quantiity Selector</h2>        
+         <h2>Add Item to Cart</h2>
+         
+  </div>
+</div>
+  {% endblock %}
