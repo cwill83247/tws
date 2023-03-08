@@ -3,7 +3,8 @@ from .models import *
 from django.http import JsonResponse
 import json
 
-#import from models.py in customerprofile app 
+#import 
+from shop.models import Product 
 from customerprofile.models import Customer
 from django.contrib.auth.models import User                        ####??
 
@@ -19,7 +20,7 @@ def updateItem(request):
     print('Action:', action)
     print('Prpdcut Id:', productId)
 
-    customer = request.user.customer    ######Current Error ######## 8th March 2023 
+    customer = request.user.customer    
     product = Product.objects.get(id=productId)
     order, created = Order.objects.get_or_create(
         customer=customer, complete=False)
