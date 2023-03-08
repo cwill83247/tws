@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'home',
     'shop.apps.ShopConfig',
     'shoppingbag.apps.ShoppingbagConfig',
+    'customerprofile',
 ]
 
 MIDDLEWARE = [
