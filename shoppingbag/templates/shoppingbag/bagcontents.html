@@ -4,7 +4,8 @@
 {% block content%}
 <div class="container">
 <h1>Shopping Bag</h1>
-<h2>total number of prpdcuts in cart {{</h2>
+<h2>total number of prpdcuts in cart {{product_count}}</h2>
+<h2>total price £{{total}}</h2>
 {{ shoppingbag_items }}
   {% if shoppingbag_items %}                <!--variable referenced in context.py-->
       <table class="shoppingbag_contents">  
