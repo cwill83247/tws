@@ -9,12 +9,32 @@ from checkout.models import Order, OrderItem
 from customerprofile.models import Customer
 from django.contrib.auth.models import User                        ####??
 
-# Create your views here.
+
+# view contents of shopping bag
+def view_shoppingbag(request):
+    
+    return render(request, 'shoppingbag/bagcontents.html')
 
 
-# Function for when item is added to shopping bag
+# add product , quantity of product to shopping bag using form method
+def add_to_bag(request, item_id):
+    
+    quantity = int(request.POST.get('quantity'))
+    redirect_url = request.POST.get('redirect_url')
+    bag = request.session.get('bag', {})
+
+    if item_id in list(bag.keys()):
+        bag[item_id] += quantity
+    else:
+        bag[item_id] = quantity
+
+    request.session['bag'] = bag
+    print(request.session['bag'])
+    return redirect(redirect_url)
+
+# Possibly Remove as using JS to Listen and then call ???? Function for when item is added to shopping bag
 def updateItem(request):
-    data = json.loads(request.body)
+    data = json.loads(request.body)                      ###10/3 
     productId = data['productId']
     action = data['action']
 

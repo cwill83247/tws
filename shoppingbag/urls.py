@@ -19,4 +19,7 @@ from . import views
 
 urlpatterns = [
        path('update_item/', views.updateItem, name="update_item"),
+       path('add/<item_id>', views.add_to_bag, name="add_to_bag"),
+       path('', views.view_shoppingbag, name="view_shoppingbag"),
 ] 
+ 

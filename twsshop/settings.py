@@ -75,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'shoppingbag.contexts.shoppingbag_contents', # to enable shoppingbag_contents across the site > shoppingbag/contexts.py
             ],
         },
     },
