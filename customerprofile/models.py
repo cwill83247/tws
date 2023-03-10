@@ -7,7 +7,7 @@ from django_countries.fields import CountryField
 class Customer(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, null=True)
-    email = models.CharField(max_length=200)  
+    email = models.EmailField() 
     phone_number = models.CharField(max_length=20, null=True, blank=False)                 #set Null=True on alot of fields whilst one migration -----
     street_address1 = models.CharField(max_length=80, null=True , blank=False)
     street_address2 = models.CharField(max_length=80, null=True, blank=True)

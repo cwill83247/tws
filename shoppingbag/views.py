@@ -5,6 +5,7 @@ import json
 
 #import 
 from shop.models import Product 
+from checkout.models import Order, OrderItem
 from customerprofile.models import Customer
 from django.contrib.auth.models import User                        ####??
 
@@ -22,8 +23,7 @@ def updateItem(request):
 
     customer = request.user.customer    
     product = Product.objects.get(id=productId)
-    #order, created = Order.objects.get_or_create(
-        #customer=customer, complete=False)
+    order, created = Order.objects.get_or_create(customer=customer, paid=False)  #come from checkout/models.py 
 
     bag = request.session.get('bag', {})             # this is key as creates in  the http session and stores it until user closes browser   
 
