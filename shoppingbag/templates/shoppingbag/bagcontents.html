@@ -61,10 +61,10 @@
                     </div>
                     <!--END Quantity selector -->
                 </form>
-                </td>
+                
                 <td> <a class="update-link text-info"><small>Update</small></a></td>
                   <td><a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}"><small>Remove</small></a></td>
-               
+                </td> 
           </tr>
           {% endfor %}
 
@@ -93,14 +93,16 @@
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
         var url = `/shoppingbag/remove/${itemId}/`;
+        var size = $(this).data('product_size');
         var data = {'csrfmiddlewaretoken': csrfToken};
+        var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
         console.log('here when clociking remove');                             //TEMP !!!!!!!
         console.log({'blah id':itemId});                                       //TEMP !!!!!!!
+        
         $.post(url, data)
          .done(function() {
              location.reload();
-            
-         });
+        });
     })
 </script>  
   
