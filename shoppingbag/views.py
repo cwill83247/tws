@@ -3,11 +3,11 @@ from .models import *
 from django.http import JsonResponse
 import json
 
-#import 
 from shop.models import Product 
 from checkout.models import Order, OrderItem
 from customerprofile.models import Customer
-from django.contrib.auth.models import User                        ####??
+from django.contrib.auth.models import User      
+from django.contrib import messages
 
 
 # view contents of shopping bag
@@ -31,6 +31,37 @@ def add_to_bag(request, item_id):
     request.session['bag'] = bag
     print(request.session['bag'])
     return redirect(redirect_url)
+
+
+def adjust_bag(request, item_id):
+    """Adjust the quantity of the specified product to the specified amount"""
+
+    quantity = int(request.POST.get('quantity'))    
+    if quantity > 0:
+        bag[item_id] = quantity
+    else:
+        bag.pop(item_id)
+
+    request.session['bag'] = bag
+    return redirect(reverse('view_shoppingbag'))
+
+
+#removing items from the bag 
+def remove_from_bag(request, item_id):
+   
+    try:
+        product = get_object_or_404(Product, pk=item_id)      #here we addign the product variable so can be used... in our messages 
+                                                        
+        bag.pop(item_id)
+        messages.success(request, f'Removed {product.name} from your bag')
+
+        request.session['bag'] = bag
+        return HttpResponse(status=200)  
+
+    except Exception as e: 
+        messages.error(request, f'Error removing item: {e}')
+        return HttpResponse(status=500)     
+
 
 # Possibly Remove as using JS to Listen and then call ???? Function for when item is added to shopping bag
 def updateItem(request):

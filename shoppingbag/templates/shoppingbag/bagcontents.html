@@ -26,13 +26,14 @@
                 <td>{{ product.name }}</td>
                 <td>{{item.product.name}}</td>
                 <td>{{item.product.description}}</td>
-                <td>{{ item.quantity }}</td>
+                <td>{{ item.quantity }}</td>  
                 <td>
                   <!--Quantity selector -->
-                  <form class="form update-form" method="POST" action="">
+                  <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
                     {% csrf_token %}
                     <div class="form-group">
                         <div class="input-group">
+                            <!-- decrease button-->                          
                             <div class="input-group-prepend">
                                 <button class="decrement-qty btn btn-sm btn-black rounded-0" 
                                     data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
@@ -41,10 +42,12 @@
                                     </span>
                                 </button>
                             </div>
+                            <!-- quantity -->
                             <input class="form-control form-control-sm qty_input" type="number"
                                 name="quantity" value="{{ item.quantity }}" min="1" max="99"
                                 data-item_id="{{ item.item_id }}"
                                 id="id_qty_{{ item.item_id }}">
+                            <!--increase button-->
                             <div class="input-group-append">
                                 <button class="increment-qty btn btn-sm btn-black rounded-0"
                                     data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
@@ -53,22 +56,52 @@
                                     </span>
                                 </button>
                             </div>
-                            {% if item.product.has_sizes %}
-                                <input type="hidden" name="product_size" value="{{ item.size }}">
-                            {% endif %}
+                            
                         </div>
                     </div>
+                    <!--END Quantity selector -->
                 </form>
                 </td>
-                <!--END Quantity selector -->
+                <td> <a class="update-link text-info"><small>Update</small></a></td>
+                  <td><a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}"><small>Remove</small></a></td>
+               
           </tr>
           {% endfor %}
 
         </tbody>
       </table>
+     
   {% else %}
   <h2>shoppinf bag is empty</h2>
   {% endif %}    
 
 </div>
+  {% endblock %}
+  {% block postloadjs %}
+  {{ block.super }}
+  <script type="text/javascript">
+    
+    // Update quantity on click
+    $('.update-link').click(function(e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+        console.log('here when click adding ');                                //TEMP !!!!!!!
+    })
+
+    // Remove item and reload on click
+    $('.remove-item').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var url = `/shoppingbag/remove/${itemId}/`;
+        var data = {'csrfmiddlewaretoken': csrfToken};
+        console.log('here when clociking remove');                             //TEMP !!!!!!!
+        console.log({'blah id':itemId});                                       //TEMP !!!!!!!
+        $.post(url, data)
+         .done(function() {
+             location.reload();
+            
+         });
+    })
+</script>  
+  
   {% endblock %}

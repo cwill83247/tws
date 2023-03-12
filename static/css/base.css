@@ -1,7 +1,5 @@
 
 
-
-
 .main-hero {                                                /* NEEDS MEDIA QUERIES*/
        
         max-width:1249px;
@@ -9,10 +7,8 @@
         background-image: url('/media/mainheroimage2.jpg');
         background-size: cover;
         background-repeat: no-repeat;        
-        border-right: 0.2rem solid white;
-       
-        
-      
+        border-right: 0.2rem solid white;    
+            
     }    
 
 .sub-hero {                                     /* NEEDS MEDIA QUERIES*/
@@ -58,5 +54,10 @@
     background-color: black;
 }
 
+/** cursor for update and remove link **/
+.update-link,
+.remove-item {
+    cursor: pointer;
+}
 
 

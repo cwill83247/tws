@@ -21,5 +21,8 @@ urlpatterns = [
        path('update_item/', views.updateItem, name="update_item"),
        path('add/<item_id>', views.add_to_bag, name="add_to_bag"),
        path('', views.view_shoppingbag, name="view_shoppingbag"),
+       path('adjust/<item_id>/', views.adjust_bag, name='adjust_bag'),
+       path('remove/<item_id>/', views.remove_from_bag, name='remove_from_bag'),
+
 ] 
  
