@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'shoppingbag.apps.ShoppingbagConfig',
     'customerprofile',
     'checkout',
+    'crispy_forms',
+
 ]
 
 MIDDLEWARE = [
@@ -60,6 +62,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'twsshop.urls'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {
@@ -77,6 +80,10 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'shoppingbag.contexts.shoppingbag_contents', # to enable shoppingbag_contents across the site > shoppingbag/contexts.py
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
