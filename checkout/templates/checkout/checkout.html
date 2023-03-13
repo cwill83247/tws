@@ -11,5 +11,13 @@
                 <hr>
             </div>
         </div>
+        <div class="row">
+            <p>"Please complete your order"</p>
+            <form action ="{% url 'checkout' %}" method="POST" id="complete-order-form">
+                {% csrf_token %}
+                {{ order_form.first_name | as_crispy_field}}
+                {{ order_form.postcode | as_crispy_field }}
+            </form>
+        </div>
 
 {% endblock %}        

@@ -69,7 +69,12 @@
 
         </tbody>
       </table>
-     
+      <a href="{% url 'checkout' %}" class="btn btn-black rounded-0 btn-lg">
+        <span class="text-uppercase">Secure Checkout</span>
+        <span class="icon">
+            <i class="fas fa-lock"></i>
+        </span>
+    </a>
   {% else %}
   <h2>shoppinf bag is empty</h2>
   {% endif %}    
