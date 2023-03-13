@@ -68,6 +68,8 @@ for (var i= 0; i < addEventHandlertoBtns.length; i++){
     })
 }  
 
+
+//Remove CODE 
 function updateUserOrder(productId, action){
     console.log('user logged in')
 

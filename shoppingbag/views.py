@@ -35,10 +35,12 @@ def add_to_bag(request, item_id):
 
 def adjust_bag(request, item_id):
     """Adjust the quantity of the specified product to the specified amount"""
-
-    quantity = int(request.POST.get('quantity'))    
+    product = get_object_or_404(Product, pk=item_id)   
+    quantity = int(request.POST.get('quantity')) 
+    bag = request.session.get('bag', {})                                 # added 13/3 @ 09:08  
     if quantity > 0:
         bag[item_id] = quantity
+        messages.success(request, f'Updated {product.name} quantity to {bag[item_id]}')
     else:
         bag.pop(item_id)
 
@@ -48,10 +50,9 @@ def adjust_bag(request, item_id):
 
 #removing items from the bag 
 def remove_from_bag(request, item_id):
-   
+    bag = request.session["bag"]
     try:
         product = get_object_or_404(Product, pk=item_id)      #here we addign the product variable so can be used... in our messages 
-                                                        
         bag.pop(item_id)
         messages.success(request, f'Removed {product.name} from your bag')
 
@@ -59,6 +60,7 @@ def remove_from_bag(request, item_id):
         return HttpResponse(status=200)  
 
     except Exception as e: 
+        print(e)
         messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)     
 
