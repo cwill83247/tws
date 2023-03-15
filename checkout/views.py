@@ -1,16 +1,24 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.conf import settings 
 from .models import Order, OrderItem
 from .forms import OrderForm
 from shoppingbag.contexts import shoppingbag_contents
 from django.contrib import messages
+import stripe
+
+
 # Create your views here.
-
-
 def checkout(request):
+
+    
     bag = request.session.get('bag', {})
     if not bag:
         messages.error(request, "Looks like you shopping bag is empty")
         return redirect(reverse('shop'))
+
+    current_bag = bag_contents(request)
+    total = current_bag['grand_total']
+    stripe_total = round(total * 100)
 
     order_form = OrderForm()
     template = 'checkout/checkout.html'
