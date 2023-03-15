@@ -1,11 +1,10 @@
 from django import forms
 from .models import Order
 
-
-class CreatingOrderForm(forms.ModelForm):
+class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ('first_name','surname', 'email', 'phone_number',
+        fields = ('first_name', 'surname', 'email', 'phone_number',
                   'street_address1', 'street_address2',
                   'town_or_city', 'postcode', 'country',
                   'county',)
@@ -29,7 +28,7 @@ class CreatingOrderForm(forms.ModelForm):
             'street_address1': 'Street Address 1',
             'street_address2': 'Street Address 2',
             'county': 'County',
-        }    
+        }  
 
         self.fields['first_name'].widget.attrs['autofocus'] = True
         for field in self.fields:

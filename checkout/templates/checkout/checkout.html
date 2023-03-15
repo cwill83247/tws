@@ -13,10 +13,11 @@
         </div>
         <div class="row">
             <p>"Please complete your order"</p>
-            <form action ="{% url 'checkout' %}" method="POST" id="complete-order-form">
+            <form action ="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
-                {{ order_form.first_name | as_crispy_field}}
-                {{ order_form.postcode | as_crispy_field }}
+                
+                <p>text:{{ order_form.email}}</p>
+                
             </form>
         </div>
 
