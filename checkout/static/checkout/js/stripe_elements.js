@@ -36,7 +36,7 @@ var card = elements.create('card', {style:style});
 /**taking stripe card -element and putting into DIV - card-element in checkout.html **/
 card.mount('#card-element');
 
-/* Handle realtime validation errors on the card element */
+/** Handle Errors on the card element pus to the DIV -card-errors in checkout.html  */
 card.addEventListener('change', function (event) {
     var errorDiv = document.getElementById('card-errors');
     if (event.error) {
