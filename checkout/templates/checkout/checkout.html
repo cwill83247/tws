@@ -12,13 +12,56 @@
             </div>
         </div>
         <div class="row">
+            <!--Order Summary -->
+            <div class="col-4">
+              <p>order summary</p>
+              <table class="checkout_order_summary"> 
+                <thead>
+                    <tr>
+                      <th>Image</th>
+                      <th>Product</th>
+                      <th>Quantity</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                <tbody>
+                {% for item in shoppingbag_items %}  
+                <tr>
+                      <td>image holder ?</td>    
+                      <td>{{ product.name }}</td>
+                      <td>{{item.product.name}}</td>
+                      <td>{{ item.quantity }}</td> 
+                      <td>{{ item.price }}</td>   
+                </tr>
+                {% endfor %}       
+                </tbody>
+               </table> 
+               <p>Discount Code !!!!!!</p>
+                <p class="my-0 small text-muted">Sub Total before shipping</p>
+            </div>                                  
+
+            
+            <div class="col-8">
             <p>"Please complete your order"</p>
             <form action ="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
-                
-                <p>text:{{ order_form.email}}</p>
+                <p>----Your Contact and delivery details</p>
+                <p>Currently - shipping in only available in the Unitied Kingdom</p>
+                {{ order_form.email | as_crispy_field }}
+                {{ order_form.phone_number | as_crispy_field }}
+                {{ order_form.first_name | as_crispy_field }}
+                {{ order_form.surname | as_crispy_field }}
+                {{ order_form.street_address1 | as_crispy_field }}
+                {{ order_form.street_address2 | as_crispy_field }}
+                {{ order_form.town_or_city | as_crispy_field }}
+                {{ order_form.postcode | as_crispy_field }}               
                 
             </form>
+            <!--Payment Section -->
+            <div>
+            <p>How would you like to Pay ?</p>
+            </div>
+        </div>
         </div>
 
 {% endblock %}        
