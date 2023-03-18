@@ -21,6 +21,7 @@ def checkout(request):
     print(current_bag)
 
     total = current_bag['grand_total']
+    #stripe requires amount in an integer so converting to pence
     stripe_total = round(total * 100)
 
     # connecting to Stripe to create Payment Intent
@@ -37,8 +38,8 @@ def checkout(request):
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
-        'stripe_public_key': 'pk_test_51MU7oOIe6TtZVkRYjIeZw2c8jb6wK1b4BELD6fXtC8tnhZefKnyBpM5i5oKTXgZQvNWbgPty0YT4KpxoL1WYEEA300Q3CHeWcV',
-        'client_secret': 'cw12345678test',
+        'stripe_public_key': stripe_public_key,
+        'client_secret': stripe_secret_key,
     }
 
     return render(request, template, context)
