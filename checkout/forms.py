@@ -15,9 +15,13 @@ class OrderForm(forms.ModelForm):
         """
         Override the Default init method so we can
         Add placeholders and classes, remove auto-generated
-        labels and set autofocus on first field
+        labels and set autofocus on email field
         """
         super().__init__(*args, **kwargs)
+        """ 
+        changing so names appear more 
+        user friendly on the form to its Db field name 
+        """
         placeholders = {
             'first_name': 'First Name',
             'surname': 'Surname',
@@ -30,7 +34,11 @@ class OrderForm(forms.ModelForm):
             'street_address2': 'Street Address 2',
             'county': 'County',
         }  
-
+        """
+        adding * on required fields
+        setting focus on email field 
+        1st on the form
+        """
         self.fields['email'].widget.attrs['autofocus'] = True
         for field in self.fields:
             if self.fields[field].required:
@@ -39,4 +47,8 @@ class OrderForm(forms.ModelForm):
                 placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
+            """
+            below set to false so we
+            use the placeholders created above
+            """
             self.fields[field].label = False
