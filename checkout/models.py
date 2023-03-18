@@ -41,8 +41,8 @@ class Order(models.Model):
 
     def update_total(self):
         """
-        Update grand total each time a line item is added,
-        accounting for delivery costs.
+        Update grand total within this class above each time a line item is added,
+        including delivery costs.
         """
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
@@ -69,6 +69,7 @@ class Order(models.Model):
 
     # need to add in link for stripe so can store payment ID use of webhooks to confirm payment          
 
+
 #each item added to the Order 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='lineitems',on_delete=models.CASCADE)
@@ -76,6 +77,15 @@ class OrderItem(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.PositiveIntegerField(default=1)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
+
+    def save(self, *args, **kwargs):
+        """
+        Override the DEFAULT save method to set the order number
+        if it doesnt have one.
+        """
+        self.lineitem_total = self.product.price * self.quantity
+        super().save(*args, **kwargs)
+
 
     def __str__(self):
         return f'Product Code {self.product.product_code} on order {self.order.order_number}'       
