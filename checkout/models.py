@@ -8,7 +8,7 @@ from django_countries.fields import CountryField
 
 # Order 
 class Order(models.Model):
-    order_number = models.CharField(max_length=200, null=True, editable=False)              #failing for some reason 
+    order_number = models.CharField(max_length=200, null=True, editable=False)             ## 18/3/23 Need ot Add Discount code and Store the Ammount of Discount 
     first_name = models.CharField(max_length=200, null=True)
     surname = models.CharField(max_length=200, null=True)
     email = models.EmailField() 
@@ -39,7 +39,7 @@ class Order(models.Model):
         """
         return uuid.uuid4().hex.upper()  
 
-    def update_total(self):
+    def update_total(self):                                                             ## 18/3/23 ADD Logic for Discount or create another Function that runs Prior !!
         """
         Update grand total within this class above each time a line item is added,
         including delivery costs.
