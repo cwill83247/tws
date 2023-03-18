@@ -51,6 +51,7 @@
             
             <div class="col-8">
             <p>"Please complete your order"</p>
+           
             <form action ="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                 <p>----Your Contact and delivery details</p>
@@ -64,11 +65,11 @@
                 {{ order_form.town_or_city | as_crispy_field }}
                 {{ order_form.postcode | as_crispy_field }}               
                 
-            </form>
+           
             <!--Payment Section -->
             <div>
             <p>How would you like to Pay ?</p>
-            <form id="payment-form">
+           
                 <div id="payment-element">
                     <!-- Elements will create form elements here -->
                 </div>

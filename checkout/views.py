@@ -39,7 +39,9 @@ def checkout(request):
     context = {
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
-        'client_secret': stripe_secret_key,
+        # secret below is returned from stripe payment intent
+        # is used to create payment
+        'client_secret': intent.client_secret,
     }
 
     return render(request, template, context)
