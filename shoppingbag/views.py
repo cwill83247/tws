@@ -8,12 +8,14 @@ from checkout.models import Order, OrderItem
 from customerprofile.models import Customer
 from django.contrib.auth.models import User      
 from django.contrib import messages
+from discountcodes.forms import DiscountVoucherForm
 
 
 # view contents of shopping bag
 def view_shoppingbag(request):
-    
-    return render(request, 'shoppingbag/bagcontents.html')
+
+    apply_coupon_form = DiscountVoucherForm()
+    return render(request, 'shoppingbag/bagcontents.html', {'apply_coupon_form': apply_coupon_form})
 
 
 # add product , quantity of product to shopping bag using form method

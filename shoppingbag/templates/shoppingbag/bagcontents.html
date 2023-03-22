@@ -66,9 +66,39 @@
                 </td> 
           </tr>
           {% endfor %}
-
+         <!--- Discount/Voucher Code-->
+         {% if shoppingbag.voucher %}
+         <tr class="subtotal">
+           <td>Subtotal</td>
+           <td colspan="4"></td>
+           <td class="num">${{ shoppingbag.get_order_total|floatformat:2 }}</td>
+         </tr>
+         <tr>
+           <td>
+             "{{ shoppingbag.voucher.code }}" coupon
+             ({{ shoppingbag.voucher.amountpercentage }}% off)
+           </td>
+           <td colspan="4"></td>
+           <td class="num neg">
+             - ${{ shoppingbag.apply_discount|floatformat:2 }}
+           </td>
+         </tr>
+       {% endif %}
+       <tr class="total">
+         <td>Total</td>
+         <td colspan="4"></td>
+         <td class="num">
+           ${{ shoppingbag.get_order_total_after_discount|floatformat:2 }}
+         </td> 
         </tbody>
       </table>
+
+      <p>Have a Discount Code ?</p>
+      <form action= "{% url "apply_voucher" %}" method="post">
+        <p>box for code ??</p>{{ apply_coupon_form }}
+        <input type="submit" value="Apply">
+        {% csrf_token %}
+      </form>
       <a href="{% url 'checkout' %}" class="btn btn-black rounded-0 btn-lg">
         <span class="text-uppercase">Secure Checkout</span>
         <span class="icon">

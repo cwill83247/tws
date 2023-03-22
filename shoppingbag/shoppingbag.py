@@ -3,6 +3,7 @@ from django.conf import settings
 from decimal import Decimal
 from shop.models import Product
 from django.shortcuts import get_object_or_404
+from discountcodes.models import Voucher
 
 
 class Shopping_Bag:
@@ -16,8 +17,9 @@ class Shopping_Bag:
             # if no shopping bag create an empty one 
             twsshoppingbag = self.session[settings.SHOPPINGBAG_SESSION_ID] = {}
         self.bag = twsshoppingbag
-
-    # iterate over items in bag and get them form the DB
+        # discount code /voucher
+        self.voucher_id = self.session.get('voucher_id')                                    #22/3 - VOUCHER
+    # iterate over items in bag and get them from the DB
     def __iter__(self):
         
         product_ids = self.bag.keys()
@@ -59,9 +61,30 @@ class Shopping_Bag:
         del self.session[settings.SHOPPINGBAG_SESSION_ID]
         self.save()
 
+    
     #update total 
     def get_order_total(self):
         return sum(Decimal(item['price']) * item['quantity'] for item in self.bag.values())
+
+    # discount code/voucher check if in session                                                 #22/3 - VOUCHER
+    @property
+    def voucher(self):
+        if self.voucher_id:
+            try:
+                return Voucher.objects.get(id=self.voucher_id)
+            except Voucher.DoesNotExist:
+                pass
+        return None
+
+    def apply_discount(self):
+        if self.voucher:
+            return (self.voucher.amountpercentage / Decimal(100))  \
+                    * self.get_order_total()
+        return Decimal(0)
+
+    def get_order_total_after_discount(self):
+        return self.get_order_total() - self.apply_discount()
+
 
 
     # setting boolean to make sure we save session data
