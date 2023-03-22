@@ -11,6 +11,7 @@ class Voucher(models.Model):
                                            MaxValueValidator(50)],
                                            help_text="Percentage 0%-50%")
     expiry_date = models.DateTimeField()
+    active = models.BooleanField()
 
-    def is_valid(self):
-        return self.expiry_date > timezone.now()
+    def __str__(self):
+        return self.code
