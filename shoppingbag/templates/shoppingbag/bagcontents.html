@@ -6,7 +6,7 @@
 <h1>Shopping Bag</h1>
 <h2>total number of prpdcuts in cart {{product_count}}</h2>
 <h2>total price £{{total}}</h2>
-<p>voucher code applied{{voucher.code}}</p>
+<p>voucher code applied{{amountpercentage}}</p>
 <p>shopping bag items{{shoppingbag_items.product}}</p>
 <p>shopping bag contents{{shoppingbag_contents}}</p>
 
@@ -80,7 +80,7 @@
          <tr>
            <td>
              "{{ shoppingbag.voucher.code }}" coupon
-             ({{ shoppingbag.voucher.amountpercentage }}% off)
+             ({{ voucher.amountpercentage }}% off)
            </td>
            <td colspan="4"></td>
            <td class="num neg">
