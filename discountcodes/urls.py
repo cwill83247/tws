@@ -15,15 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.conf import settings
-from django.conf.urls.static import static 
+from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls')),
-    path('', include('home.urls')),
-    path('discountcodes/', include('discountcodes.urls')),
-    path('shop/', include('shop.urls')),
-    path('shoppingbag/', include('shoppingbag.urls')),
-    path('checkout/', include('checkout.urls')),   
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+       path('apply_voucher/', views.apply_voucher, name="apply_voucher"),       
+] 
+ 
