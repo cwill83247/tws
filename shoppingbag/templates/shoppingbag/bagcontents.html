@@ -6,6 +6,10 @@
 <h1>Shopping Bag</h1>
 <h2>total number of prpdcuts in cart {{product_count}}</h2>
 <h2>total price £{{total}}</h2>
+<p>voucher code applied{{voucher.code}}</p>
+<p>shopping bag items{{shoppingbag_items.product}}</p>
+<p>shopping bag contents{{shoppingbag_contents}}</p>
+
 {{ shoppingbag_items }}
   {% if shoppingbag_items %}                <!--variable referenced in context.py-->
       <table class="shoppingbag_contents">  
@@ -66,7 +70,7 @@
                 </td> 
           </tr>
           {% endfor %}
-         <!--- Discount/Voucher Code-->
+         <!--- Discount/Voucher Code-->                                    <!--- Troubleshoot OUTPUT these to console !!!-->
          {% if shoppingbag.voucher %}
          <tr class="subtotal">
            <td>Subtotal</td>
@@ -88,14 +92,14 @@
          <td>Total</td>
          <td colspan="4"></td>
          <td class="num">
-           ${{ shoppingbag.get_order_total_after_discount|floatformat:2 }}
+           £££££{{ shoppingbag.get_order_total_after_discount|floatformat:2 }}
          </td> 
         </tbody>
       </table>
 
       <p>Have a Discount Code ?</p>
-      <form action= "{% url "apply_voucher" %}" method="post">
-        <p>box for code ??</p>{{ apply_coupon_form }}
+      <form action= "{% url 'apply_voucher'%}" method="post">                   <!--submit for Voucher-->
+        {{ apply_coupon_form }}
         <input type="submit" value="Apply">
         {% csrf_token %}
       </form>

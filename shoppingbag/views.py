@@ -13,8 +13,7 @@ from discountcodes.forms import DiscountVoucherForm
 
 # view contents of shopping bag
 def view_shoppingbag(request):
-
-    apply_coupon_form = DiscountVoucherForm()
+    apply_coupon_form = DiscountVoucherForm()              #pulls in forms.py and discount field 
     return render(request, 'shoppingbag/bagcontents.html', {'apply_coupon_form': apply_coupon_form})
 
 

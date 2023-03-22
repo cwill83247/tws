@@ -17,6 +17,11 @@ def apply_voucher(request):
             voucher = Voucher.objects.get(code__iexact=code,
                                           expiry_date__gte=now, active=True)
             request.session['voucher_id'] = voucher.id
+            print('try')   
+            print({{code}})                                                     # TROUBLESHOOTING
         except Voucher.DoesNotExist:
             request.session['voucher_id'] = None
-    return redirect('shoppingbag/')                                         ## Unsure on Redirect 
+            print('except')                                                 # TROUBLESHOOTING
+    
+    return redirect('/shoppingbag')                                         ## Unsure on Redirect 
+    

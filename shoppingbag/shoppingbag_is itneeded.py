@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 from discountcodes.models import Voucher
 
 
-class Shopping_Bag:
+class Shopping_BagISITNEEDED:
     def __init__(self, request):
         """
         Initialize the shopping bag.
@@ -62,9 +62,10 @@ class Shopping_Bag:
         self.save()
 
     
-    #update total 
+    # update total 
     def get_order_total(self):
         return sum(Decimal(item['price']) * item['quantity'] for item in self.bag.values())
+
 
     # discount code/voucher check if in session                                                 #22/3 - VOUCHER
     @property
@@ -84,7 +85,6 @@ class Shopping_Bag:
 
     def get_order_total_after_discount(self):
         return self.get_order_total() - self.apply_discount()
-
 
 
     # setting boolean to make sure we save session data

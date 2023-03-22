@@ -4,6 +4,7 @@ from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from shop.models import Product
+from discountcodes.forms import DiscountVoucherForm
 
 
 def shoppingbag_contents(request):
@@ -13,7 +14,9 @@ def shoppingbag_contents(request):
     product_count = 0
 
     bag = request.session.get('bag', {})
-
+    # discount code /voucher
+    voucher_id = request.session.get('voucher_id')     ###22/3/23 Voucher
+    
     for item_id, quantity in bag.items():
         product = get_object_or_404(Product, pk=item_id)
         total += quantity * product.price
@@ -23,6 +26,25 @@ def shoppingbag_contents(request):
             'quantity': quantity,
             'product': product,
         })
+
+     # discount code/voucher check if in session                                                 #22/3 - VOUCHER
+    
+    def voucher(self):
+        if self.voucher_id:
+            try:
+                return Voucher.objects.get(id=self.voucher_id)
+            except Voucher.DoesNotExist:
+                pass
+        return None
+
+    def apply_voucher(self):
+        if self.voucher:
+            return (self.voucher.amountpercentage / Decimal(100))  \
+                    * self.get_order_total()
+        return Decimal(0)
+
+    def get_order_total_after_discount(self):
+        return self.get_order_total() - self.apply_discount()
 
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = Decimal(settings.STANDARD_DELIVERY)
