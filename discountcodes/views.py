@@ -4,6 +4,7 @@ from django.views.decorators.http import require_POST
 from .models import Voucher
 from .forms import DiscountVoucherForm
 from shoppingbag import views
+from shoppingbag.contexts import shoppingbag_contents
 from decimal import Decimal
 # Create your views here.
 
@@ -18,18 +19,20 @@ def apply_voucher(request):
                                           expiry_date__gte=now, active=True)
             request.session['voucher_id'] = voucher.id
 
-            ###   added @ 17:51
-            
-            get_order_total = current_bag['grand_total']
-            return (voucher.amountpercentage / Decimal(100))  \
-                    * get_order_total()
-            return Decimal(0)
-                        
+           
+            # bag = request.session.get('bag')                        ## dont think its needed added 19.36
+            current_bag = shoppingbag_contents(request)
+            print("current bag", current_bag)
+            get_order_total = current_bag['total']
+            print("get order total",get_order_total)
+            print('valid code')  
+             ###   added @ 17:51
+            savings = (voucher.amountpercentage / Decimal(100)) * get_order_total
+            print("savings",savings)                        
             def get_order_total_after_discount(self):
-                return get_order_total() - apply_discount()
+                return get_order_total - apply_discount
 
-            ####     end of @17:51 
-            print('valid code')   
+           
             print(code)
             print(voucher.expiry_date)
             print(voucher.amountpercentage)
@@ -43,6 +46,7 @@ def apply_voucher(request):
         'voucher.id': voucher.id,
         'code': code,
         'amountpercentage': voucher.amountpercentage,
+        'savings': savings,
     }
     return render(request, 'shoppingbag/bagcontents.html', context) 
 
