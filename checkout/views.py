@@ -36,12 +36,12 @@ def checkout(request):
             for item_id, item_data in bag.items():
                 try:
                     product = Product.objects.get(id=item_id)
-                    #if isinstance(item_data, int):
                     order_line_item = OrderItem(
                         order=order,
                         product=product,
                         quantity=item_data,
                     )
+                    print("order bit", order)
                     order_line_item.save()
                     
                 except Product.DoesNotExist:
