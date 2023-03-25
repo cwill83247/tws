@@ -5,6 +5,7 @@ from .forms import OrderForm
 from shoppingbag.contexts import shoppingbag_contents
 from discountcodes import views
 from django.contrib import messages
+from shop.models import Product
 import stripe
 
 
@@ -24,7 +25,7 @@ def checkout(request):
             'street_address1': request.POST['street_address1'],
             'street_address2': request.POST['street_address2'],
             'town_or_city': request.POST['town_or_city'],
-            'county': request.POST['county'],
+            #'county': request.POST['county'],
             'postcode': request.POST['postcode'],
             'country': request.POST['country'],            
         }
@@ -36,7 +37,7 @@ def checkout(request):
                 try:
                     product = Product.objects.get(id=item_id)
                     #if isinstance(item_data, int):
-                    order_line_item = OrderLineItem(
+                    order_line_item = OrderItem(
                         order=order,
                         product=product,
                         quantity=item_data,
@@ -55,6 +56,7 @@ def checkout(request):
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
+            print(order_form.errors.as_data())    
     else:
         bag = request.session.get('bag', {})
         
@@ -75,10 +77,8 @@ def checkout(request):
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
             amount=stripe_total, currency="gbp",
-            )
-
-        #print(intent)
-
+        )
+        
         order_form = OrderForm()
     template = 'checkout/checkout.html'
     context = {
@@ -94,14 +94,14 @@ def checkout(request):
 def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    messages.success(request, f'Order Completed!, your orde rnumber is {order_number}')
+    messages.success(request, f'Order Completed!, your orde rnumber is')
 
     # if success redirect customer and clear the shopping bag so empty
     if 'bag' in request.session:
         del request.session['bag']
 
-    template =  'checkout/checkout_success.html'
+    template = 'checkout/checkout_success.html'
     context = {
-        'order':order ,
+        'order': order,
     }
     return render(request, template, context)   
