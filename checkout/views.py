@@ -18,7 +18,7 @@ def checkout(request):
         return redirect(reverse('shop'))
 
     current_bag = shoppingbag_contents(request)
-    print(current_bag)
+    #print(current_bag)
 
     total = current_bag['grand_total']
     #stripe requires amount in an integer so converting to pence
@@ -32,7 +32,7 @@ def checkout(request):
         amount=stripe_total, currency="gbp",
         )
 
-    print(intent)
+    #print(intent)
 
     order_form = OrderForm()
     template = 'checkout/checkout.html'

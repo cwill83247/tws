@@ -29,8 +29,8 @@ def apply_voucher(request):
              ###   added @ 17:51
             savings = (voucher.amountpercentage / Decimal(100)) * get_order_total
             print("savings",savings)                        
-            def get_order_total_after_discount(self):
-                return get_order_total - apply_discount
+            get_order_total_after_discount = get_order_total - savings
+            print("total after discount", get_order_total_after_discount)    
 
            
             print(code)
@@ -47,6 +47,7 @@ def apply_voucher(request):
         'code': code,
         'amountpercentage': voucher.amountpercentage,
         'savings': savings,
+        'get_order_total_after_discount': get_order_total_after_discount,
     }
     return render(request, 'shoppingbag/bagcontents.html', context) 
 
