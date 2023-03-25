@@ -3,6 +3,7 @@ from django.conf import settings
 from .models import Order, OrderItem
 from .forms import OrderForm
 from shoppingbag.contexts import shoppingbag_contents
+from discountcodes import views
 from django.contrib import messages
 import stripe
 
@@ -13,6 +14,7 @@ def checkout(request):
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     
     bag = request.session.get('bag', {})
+    
     if not bag:
         messages.error(request, "Looks like you shopping bag is empty")
         return redirect(reverse('shop'))
@@ -42,6 +44,7 @@ def checkout(request):
         # secret below is returned from stripe payment intent
         # is used to create payment
         'client_secret': intent.client_secret,
+        
     }
 
     return render(request, template, context)
