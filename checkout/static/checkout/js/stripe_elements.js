@@ -79,7 +79,7 @@ form.addEventListener('submit', function(ev) {
             //enabling card element
             card.update({ 'disabled': false});
             $('#submit-button').attr('disabled', false);
-            console.log("payment failed")                                  //TEMP for Troubleshooting
+            console.log("payment failed")                                 
         } else {
             // if intent succeeeded then submit and will redirect
             if (result.paymentIntent.status === 'succeeded') {
