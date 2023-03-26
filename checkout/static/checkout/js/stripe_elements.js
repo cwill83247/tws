@@ -62,6 +62,10 @@ form.addEventListener('submit', function(ev) {
     //disabling card element to stop double submission
     card.update({ 'disabled': true});
     $('#submit-button').attr('disabled', true);
+    // handles the overlay and applies the customCSS
+    // whilst payment is being processed
+    $('#payment-form').fadeToggle(100);
+    $('#payment-processing-overlay').fadeToggle(100);
     stripe.confirmCardPayment(clientSecret, {
         payment_method: {
             card: card,
@@ -76,6 +80,10 @@ form.addEventListener('submit', function(ev) {
                 </span>
                 <span>${result.error.message}</span>`;
             $(errorDiv).html(html);
+            // handles the overlay and applies the customCSS
+            $('#payment-form').fadeToggle(100);
+            $('#payment-processing-overlay').fadeToggle(100);
+
             //enabling card element
             card.update({ 'disabled': false});
             $('#submit-button').attr('disabled', false);
