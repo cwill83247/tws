@@ -66,34 +66,78 @@ form.addEventListener('submit', function(ev) {
     // whilst payment is being processed
     $('#payment-form').fadeToggle(100);
     $('#payment-processing-overlay').fadeToggle(100);
-    stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-            card: card,
-        }
-    }).then(function(result) {
-        if (result.error) {
-            //any error gets added into card-errors div
-            var errorDiv = document.getElementById('card-errors');
-            var html = `
-                <span class="icon" role="alert">
-                <i class="fas fa-times"></i>
-                </span>
-                <span>${result.error.message}</span>`;
-            $(errorDiv).html(html);
-            // handles the overlay and applies the customCSS
-            $('#payment-form').fadeToggle(100);
-            $('#payment-processing-overlay').fadeToggle(100);
+    
+    // SAVE ADDRESS Variable HERE  once added to form  
 
-            //enabling card element
-            card.update({ 'disabled': false});
-            $('#submit-button').attr('disabled', false);
-            console.log("payment failed")                                 
-        } else {
-            // if intent succeeeded then submit and will redirect
-            if (result.paymentIntent.status === 'succeeded') {
-                form.submit();
+    // From using {% csrf_token %} in the form
+    var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+    var postData = {
+        'csrfmiddlewaretoken': csrfToken,
+        'client_secret': clientSecret,
+        // SAVE ADDRESS 'save_info': saveInfo,
+    };
+    var url = '/checkout/cache_checkout_data/';
+
+    //posting data to the view 
+    $.post(url, postData).done(function() {
+        //passing information to Stripe from checkout form 
+        stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                card: card,
+                billing_details: {
+                    name: $.trim(form.first_name.value),
+                    phone: $.trim(form.phone_number.value),
+                    email: $.trim(form.email.value),
+                    address:{
+                        line1: $.trim(form.street_address1.value),
+                        line2: $.trim(form.street_address2.value),
+                        city: $.trim(form.town_or_city.value),
+                        country: $.trim(form.country.value),
+                        //state: $.trim(form.county.value),
+                    }
+                }
+            },
+            shipping: {
+                name: $.trim(form.first_name.value),
+                phone: $.trim(form.phone_number.value),
+                //email: $.trim(form.email.value),
+                address:{
+                    line1: $.trim(form.street_address1.value),
+                    line2: $.trim(form.street_address2.value),
+                    country: $.trim(form.country.value),
+                    postal_code: $.trim(form.postcode.value),
+                    //state: $.trim(form.county.value),
+                }
+            },
+            
+        }).then(function(result) {
+            if (result.error) {
+                //any error gets added into card-errors div
+                var errorDiv = document.getElementById('card-errors');
+                var html = `
+                    <span class="icon" role="alert">
+                    <i class="fas fa-times"></i>
+                    </span>
+                    <span>${result.error.message}</span>`;
+                $(errorDiv).html(html);
+                // handles the overlay and applies the customCSS
+                $('#payment-form').fadeToggle(100);
+                $('#payment-processing-overlay').fadeToggle(100);
+
+                //enabling card element
+                card.update({ 'disabled': false});
+                $('#submit-button').attr('disabled', false);
+                console.log("payment failed")                                 
+            } else {
+                // if intent succeeeded then submit and will redirect
+                if (result.paymentIntent.status === 'succeeded') {
+                    form.submit();
+                }
             }
-        }
-    });
+        });     
+    }).fail(function () {
+        location.reload();
+    })   
+   
 });
 
