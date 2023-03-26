@@ -1,4 +1,5 @@
 import uuid 
+from decimal import Decimal
 from django.db import models
 from django.conf import settings
 from shop.models import Product, Category
@@ -44,9 +45,9 @@ class Order(models.Model):
         Update grand total within this class above each time a line item is added,
         including delivery costs.
         """
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
+        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
-            self.delivery_cost = self.order_total + settings.STANDARD_DELIVERY 
+            self.delivery_cost = Decimal(settings.STANDARD_DELIVERY) 
         else:
             self.delivery_cost = 0
         self.grand_total = self.order_total + self.delivery_cost
@@ -74,7 +75,7 @@ class Order(models.Model):
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='lineitems',on_delete=models.CASCADE)
     product = models.ForeignKey(Product, related_name='order_items',on_delete=models.CASCADE)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    #price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.PositiveIntegerField(default=1)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 

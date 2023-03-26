@@ -31,9 +31,12 @@ def checkout(request):
         }
 
         order_form = OrderForm(form_data)   ## create an instanc eof order form and put data into it   
-        if order_form.is_valid():            
+        if order_form.is_valid():
+            # print("errors", order_form.errors)            
             order = order_form.save()
             for item_id, item_data in bag.items():
+                print("BAG")
+                print(item_id)
                 try:
                     product = Product.objects.get(id=item_id)
                     order_line_item = OrderItem(
@@ -42,6 +45,8 @@ def checkout(request):
                         quantity=item_data,
                     )
                     print("order bit", order)
+                    print("prpdcut bit", product)
+                    #print("quantity section", quantity)
                     order_line_item.save()
                     
                 except Product.DoesNotExist:
@@ -53,6 +58,7 @@ def checkout(request):
 
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
+            ## end of for loop
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
