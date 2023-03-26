@@ -171,6 +171,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Stripe Specific settings
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY_TWS', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY_TWS', '')
+STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET_TWS', '')
 
 # Delivery Related
 FREE_DELIVERY_THRESHOLD = 100
