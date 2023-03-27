@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 # Create your models here.
@@ -17,5 +19,16 @@ class Customer(models.Model):
     postcode = models.CharField(max_length=20, null=True, blank=True)    
     country = CountryField(blank_label='Country *', null=True , blank=False)            #  set Null = True to workaround re visit country dropdown issue 
 
+    #returns username 
     def __str__(self):
-        return self.name
+        return self.user.username
+
+@receiver(post_save, sender=User)
+def create_or_update_user_profile(sender, instance, created, **kwargs):
+    """
+    On Save create if needed or Update a users profile 
+    """
+    if created:
+        UserProfile.objects.create(user=instance)
+    # otherwise just save changes ot users profile
+    instance.userprofile.save()        

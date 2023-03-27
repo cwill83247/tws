@@ -5,11 +5,14 @@ from django.conf import settings
 from shop.models import Product, Category
 from django.db.models import Sum
 from django_countries.fields import CountryField
+from customerprofile.models import Customer
 
 
 # Order 
 class Order(models.Model):
     order_number = models.CharField(max_length=200, null=True, editable=False)             ## 18/3/23 Need ot Add Discount code and Store the Ammount of Discount 
+    # below can be access due to related_name by - user.customer.orders
+    user_profile = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
     first_name = models.CharField(max_length=200, null=True)
     surname = models.CharField(max_length=200, null=True)
     email = models.EmailField() 
