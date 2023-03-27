@@ -1,14 +1,14 @@
 from django import forms
-from .models import Order
+from .models import Customer
 
 
-class OrderForm(forms.ModelForm):
+class CustomerProfileForm(forms.ModelForm):
     class Meta:
-        model = Order
-        fields = ('first_name', 'surname', 'email', 'phone_number',
+        model = Customer
+        fields = ('name', 'surname', 'email', 'phone_number',
                   'street_address1', 'street_address2',
                   'town_or_city', 'postcode', 'country',)
-
+    
     # advanced form customisation from Code Institute 
     def __init__(self, *args, **kwargs):
         """
@@ -31,7 +31,7 @@ class OrderForm(forms.ModelForm):
             'town_or_city': 'Town or City',
             'street_address1': 'Street and house number',
             'street_address2': 'Street Address 2',
-            
+            'county': 'County',
         }  
         """
         adding * on required fields
