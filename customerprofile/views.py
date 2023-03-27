@@ -9,7 +9,7 @@ from checkout.models import Order
 @login_required
 def profile(request):
     """ Display Customer profile. """
-    profile = get_object_or_404(Customer(), user=request.user)
+    profile = get_object_or_404(Customer, user=request.user)
 
     if request.method == 'POST':
         form = CustomerProfileForm(request.POST, instance=profile)

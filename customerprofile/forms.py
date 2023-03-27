@@ -22,7 +22,7 @@ class CustomerProfileForm(forms.ModelForm):
         user friendly on the form to its Db field name 
         """
         placeholders = {
-            'first_name': 'First Name',
+            'name': 'First Name',
             'surname': 'Surname',
             'email': 'Email Address',
             'phone_number': 'Phone Number',
