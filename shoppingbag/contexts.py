@@ -35,7 +35,9 @@ def shoppingbag_contents(request):
         delivery = 0
         free_delivery_delta = 0
     
-    grand_total = delivery + total         
+    grand_total = delivery + total  
+
+    randomvalue = "chrisrandomvalue"                     #TESTING        
 
     context = {
         'shoppingbag_items': shoppingbag_items, 
@@ -45,6 +47,7 @@ def shoppingbag_contents(request):
         'free_delivery_delta': free_delivery_delta,
         'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
         'grand_total': grand_total,   
+        'randomvalue': randomvalue,
         
     }    
     return context

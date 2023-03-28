@@ -9,6 +9,8 @@ from shop.models import Product
 import stripe
 import json
 from django.views.decorators.http import require_POST
+from customerprofile.models import Customer
+from customerprofile.forms import CustomerProfileForm
 
 @require_POST
 def cache_checkout_data(request):
