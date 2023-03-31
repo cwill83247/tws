@@ -103,8 +103,29 @@ def checkout(request):
         intent = stripe.PaymentIntent.create(
             amount=stripe_total, currency="gbp",
         )
-        
-        order_form = OrderForm()
+        # if user is logged in pre-populate form, from customerprofile
+
+        if request.user.is_authenticated:
+            try:
+                profile = Customer.objects.get(user=request.user)
+                print(profile.name)
+                order_form = OrderForm(initial={
+                    'email': profile.email, 
+                    'phone_number': profile.phone_number,               
+                    'first_name': profile.name,         
+                    'surname': profile.surname,                      
+                    'street_address1': profile.street_address1, 
+                    'street_address2': profile.street_address2, 
+                    'town_or_city': profile.town_or_city,                                  
+                    'postcode': profile.postcode, 
+                    'country': profile.country,         
+                })
+            except Customer.DoesNotExist:
+                order_form = OrderForm()
+        else:        
+            order_form = OrderForm()
+
+
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
@@ -126,8 +147,6 @@ def checkout_success(request, order_number):
         profile = Customer.objects.get(user=request.user)
         order.user_profile = profile
         order.save()
-
-
 
     messages.success(request, f'Order Completed!, your orde rnumber is')
 
