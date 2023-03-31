@@ -124,7 +124,7 @@ def checkout(request):
                 order_form = OrderForm()
         else:        
             order_form = OrderForm()
-
+    print(intent)
 
     template = 'checkout/checkout.html'
     context = {
@@ -141,6 +141,9 @@ def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
+    # getting stripe payment id form webhook_handler
+    #payment = Order.objects.get(id=stripe_id)                              ##31/3/23 stripe id 
+    
     # checking if user is logged in and saving order to ther profile
 
     if request.user.is_authenticated:

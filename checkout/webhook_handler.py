@@ -19,7 +19,14 @@ class StripeWH_Handler:
         payment_intent.succeeded - Stripe
         """
         intent = event.data.object
-        print(intent)
+        if intent.mode == 'payment' and intent.payment_status == 'succeeded':              # strip 31/3/23
+            try:                                                                            # strip 31/3/23
+                order = Order.objects.get(id=session.client_reference_id)               # strip 31/3/23
+            except Order.DoesNotExist:                                                      # strip 31/3/23
+                return HttpResponse(status=404)                                         # strip 31/3/23
+            order.paid = True                                                       # strip 31/3/23
+            order.save()                                                            # strip 31/3/23   
+
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
             status=200)
