@@ -28,7 +28,11 @@ def apply_voucher(request):
             savings = (voucher.amountpercentage / Decimal(100)) * get_order_total
             print("savings",savings)                        
             get_order_total_after_discount = get_order_total - savings
-            print("total after discount", get_order_total_after_discount)  
+            get_order_total_after_discount = float(get_order_total_after_discount)   #31/3 had to convert to float otherwise gettign JSon seralize errors
+            print("total after discount", get_order_total_after_discount) 
+            request.session['christest'] = get_order_total_after_discount             #31/3 TEST
+            christestgrabbedfromsession = request.session.get('christest')              # 31/3 TEST
+            print("value form session", christestgrabbedfromsession)                # 31/3 TEST
                                   
             print(code)
             print(voucher.expiry_date)
