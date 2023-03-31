@@ -119,6 +119,16 @@ def checkout(request):
 def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
+
+    # checking if user is logged in and saving order to ther profile
+
+    if request.user.is_authenticated:
+        profile = Customer.objects.get(user=request.user)
+        order.user_profile = profile
+        order.save()
+
+
+
     messages.success(request, f'Order Completed!, your orde rnumber is')
 
     # if success redirect customer and clear the shopping bag so empty
