@@ -23,12 +23,14 @@ class Customer(models.Model):
     def __str__(self):
         return self.user.username
 
+"""
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
-    """
-    On Save create if needed or Update a users profile 
-    """
+    
+    #On Save create if needed or Update a users profile 
+    
     if created:
-        UserProfile.objects.create(user=instance)
+        Customer().objects.create(user=instance)
     # otherwise just save changes ot users profile
-    instance.userprofile.save()        
+    instance.customerprofile.save()        
+"""    
