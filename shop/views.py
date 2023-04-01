@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Category, Product
 from .forms import ProductForm 
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -21,6 +22,7 @@ def product_list(request):    #passingin category so can filter
 
 
 # Product Details 
+
 def product_detail(request, id):
     product = get_object_or_404(Product, id=id)                 
     context = {                                                                 
@@ -30,7 +32,7 @@ def product_detail(request, id):
     return render(request, 'shop/product_detail.html', context)                
 
 # Manage Products (Admin Only)
-
+@login_required
 def add_product(request):
     
     if request.method == 'POST':
