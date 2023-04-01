@@ -1,4 +1,4 @@
-from django import ofrms
+from django import forms
 from .models import Product, Category
 
 class ProductForm (forms.ModelForm):
@@ -9,6 +9,6 @@ class ProductForm (forms.ModelForm):
 
     def __init__ (self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        categories - Category.objects.all  
-        
-          
+        categories = Category.objects.all  
+
+

@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Category, Product 
+from .models import Category, Product
+from .forms import ProductForm 
 
 # Create your views here.
 
@@ -26,3 +27,16 @@ def product_detail(request, id):
     }
 
     return render(request, 'shop/product_detail.html', context)                
+
+# Manage Products (Admin Only)
+
+def add_product(request):
+    form = ProductForm()
+        
+    template = 'shop/add_product.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)        
+
