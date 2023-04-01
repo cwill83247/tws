@@ -177,6 +177,9 @@ STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET_TWS', '')
 FREE_DELIVERY_THRESHOLD = 100
 STANDARD_DELIVERY = 3.99
 
+# Company Email
+DEFAULT_FROM_EMAIL = 'breakthrumusic@hotmail.com'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
