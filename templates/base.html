@@ -117,12 +117,16 @@
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
               <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
             </form>
-    
             <div class="text-end">
-              <button type="button" class="btn btn-outline-light me-2">Login</button>
-              <a href="{% url 'account_login' %}">Login</a>
-              <button type="button" class="btn btn-warning">Sign-up</button>
-            </div>
+            {% if user.is_authenticated %}    
+                <button type="button" class="btn btn-outline-light me-2">Login</button>
+                <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+            {% else %}                
+                <a href="{% url 'account_login' %}" class="btn btn-primary" role="button" aria-pressed="true">Sign In</a>  
+                <a href="{% url 'account_signup' %}" class="btn btn-warning" role="button" aria-pressed="true">Sign Up</a>
+            {% endif %}                
+
+              </div>
           </div>
         </div>
       </header>
