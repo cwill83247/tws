@@ -12,7 +12,7 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = (OrderItemAdminInline,)
     list_display = ['order_number', 'id', 'email',
                     'order_total', 'delivery_cost', 'grand_total',  'town_or_city', 'paid',
-                    'created', 'updated']
+                    'order_dispatched', 'updated']
 
     readonly_fields = ('order_number', 'delivery_cost', 'order_total', 'grand_total')                
     list_filter = ['paid', 'created', 'updated']

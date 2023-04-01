@@ -4,7 +4,7 @@
 {% block content %}
     <div class="container">
         <h1>Test Value from Contexts.py {{ randomvalue}}</h1>
-        <h1>christestgrabbedfromsession: {{ christestgrabbedfromsession }} </h1>
+        <h1>christestgrabbedfromsessionviacontact.py: £{{ christestgrabbedfromsessionaddincontext|floatformat:2 }} </h1>
         <h1>Grand total: £ {{grand_total}}</h1>
         <div class="row">
             <div class="col-sm-6 col-lg-8 main-hero">

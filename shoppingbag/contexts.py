@@ -17,6 +17,7 @@ def shoppingbag_contents(request):
     bag = request.session.get('bag', {})
     # discount code /voucher
     voucher_id = request.session.get('voucher_id')     ###22/3/23 Voucher
+    christestgrabbedfromsessionaddincontext = request.session.get('christest')              # 31/3 TEST 
     
     for item_id, quantity in bag.items():
         product = get_object_or_404(Product, pk=item_id)
@@ -32,7 +33,7 @@ def shoppingbag_contents(request):
         delivery = Decimal(settings.STANDARD_DELIVERY)
         free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
     else:
-        delivery = 0
+        delivery = 11
         free_delivery_delta = 0
     
     grand_total = delivery + total  
@@ -47,8 +48,8 @@ def shoppingbag_contents(request):
         'free_delivery_delta': free_delivery_delta,
         'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
         'grand_total': grand_total,   
-        'randomvalue': randomvalue,  
-                                        #TESTING
+        'randomvalue': randomvalue,      #TESTING
+        'christestgrabbedfromsessionaddincontext': christestgrabbedfromsessionaddincontext,
         
     }    
     return context
