@@ -95,6 +95,7 @@
     
           
         </header>
+       
       </div>
     
       <div class="b-example-divider"></div>
@@ -130,17 +131,20 @@
           </div>
         </div>
       </header>
-    
+          
       <div class="b-example-divider"></div>
-
-      <div class="container">
-       <p></p>
-      </div>  
+     
+<div class="container">    
 
     <!-- Placeholder for messages from DJANGO-->
     {% if messages %}
-        <div class="message-container"></div>
-    {% endif %}
+      <div class="message-container">
+          {% for message in messages %}
+              <p>{{ message }}</p>
+          {% endfor %}
+      </div>
+  {% endif %}
+</div>  
 
     <!-- Placeholder for additonal header content at top of page-->
     {% block page_sub_header %}
