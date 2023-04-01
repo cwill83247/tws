@@ -121,7 +121,7 @@
             <div class="text-end">
             {% if user.is_authenticated %} 
               {% if request.user.is_superuser %}
-                <a href="{% url 'product_admin' %}" class="btn btn-primary" role="button" aria-pressed="true">Product Management</a>
+                <a href="{% url 'product_admin' %}" class="btn btn-primary" role="button" aria-pressed="true">Manage Shop</a>
               {% endif %}      
             <a href="{% url 'profile' %}" class="btn btn-primary" role="button" aria-pressed="true">My Details</a>  
             <a href="{% url 'account_logout' %}" class="btn btn-primary" role="button" aria-pressed="true">Logout</a>  
