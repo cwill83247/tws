@@ -20,7 +20,17 @@
             <div class="col">
                 <hr>
                 <h2 class="logo-font mb-4">Contact Us</h2>
-                <hr>
+                <hr>                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-6">               
+                <form class="mt-3" action="{% url 'contactus' %}" method="POST" id="contactus_form">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class="btn btn-dark text-uppercase float-right">Get in Touch</button>
+                </form>
+            </div>
             </div>
         </div>
 {% endblock %}        
