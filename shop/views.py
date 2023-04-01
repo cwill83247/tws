@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Category, Product
 from .forms import ProductForm 
+from django.contrib import messages
 
 # Create your views here.
 
@@ -31,8 +32,18 @@ def product_detail(request, id):
 # Manage Products (Admin Only)
 
 def add_product(request):
-    form = ProductForm()
-        
+    
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save()
+            messages.success(request, 'Successfully added product!')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to add product.- Please try again')
+    else:
+        form = ProductForm()  
+                
     template = 'shop/add_product.html'
     context = {
         'form': form,
