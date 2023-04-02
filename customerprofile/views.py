@@ -13,7 +13,7 @@ def profile(request):
     print("logged in as:", profile)                     #troubleshooting
     if request.method == 'POST':
         form = CustomerProfileForm(request.POST, instance=profile)
-        if form.is_valid():
+        if form.is_valid():            
             form.save()
             messages.success(request, 'Profile updated successfully')
         else:
@@ -48,21 +48,24 @@ def order_history(request, order_number):
 
     return render(request, template, context)
 
+
 @login_required
 def new_profile(request):
-    """ create new Customer profile. """
-    profile = get_object_or_404(Customer, user=request.user)
+    """ create new Customer profile. """        
     if request.method == 'POST':
-        form = CustomerProfileForm(request.POST, instance=profile)
+        form = CustomerProfileForm(request.POST)
         if form.is_valid():
-            form.save()
+            profile = form.save(commit=False)
+            """ set the user to account logged in"""
+            profile.user = request.user  
+            profile.save()
+            print(user) 
             messages.success(request, 'Profile created successfully')
         else:
             messages.error(request, 'Creation Failed. Please ensure the form is valid.')
-    else:
-        form = CustomerProfileForm(instance=profile)
+    else:                         
+        form = CustomerProfileForm()         
     
-
     template = 'customerprofile/new_customerprofile.html'
     context = {
         'form': form,        
