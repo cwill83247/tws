@@ -148,13 +148,16 @@ def checkout_success(request, order_number):
     #payment = Order.objects.get(id=stripe_id)                              ##31/3/23 stripe id 
     
     # checking if user is logged in and saving order to ther profile
+    # try added becuase osme users dont have a profile initially
 
     if request.user.is_authenticated:
-        profile = Customer.objects.get(user=request.user)
-        order.user_profile = profile
-        order.save()
-
-    messages.success(request, f'Order Completed!, your orde rnumber is')
+        try:
+            profile = Customer.objects.get(user=request.user)
+            order.user_profile = profile
+            order.save()
+            messages.success(request, f'Order Completed!, your orde rnumber is')
+        except:
+            messages.success(request, f'Consider creating a profile to save your delivery information, and enable faster checkouts')    
 
     # if success redirect customer and clear the shopping bag so empty
     if 'bag' in request.session:

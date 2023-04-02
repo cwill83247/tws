@@ -65,7 +65,7 @@ def new_profile(request):
             """ set the user to account logged in"""
             profile.user = request.user  
             profile.save()
-            print(user) 
+            
             messages.success(request, 'Profile created successfully')
         else:
             messages.error(request, 'Creation Failed. Please ensure the form is valid.')
