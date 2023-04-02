@@ -1,16 +1,22 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Customer
 from .forms import CustomerProfileForm
 from checkout.models import Order
+from django.http import Http404
 
 
 @login_required
 def profile(request):
-    """ Display Customer profile. """
-    profile = get_object_or_404(Customer, user=request.user)
-    print("logged in as:", profile)                     #troubleshooting
+    """ Display and Edit Customer profile. """
+    try:
+        profile = get_object_or_404(Customer, user=request.user)
+    except Http404:
+        return redirect('new_profile/')
+
+                                        
+    print("logged in as:", profile)                     
     if request.method == 'POST':
         form = CustomerProfileForm(request.POST, instance=profile)
         if form.is_valid():            
@@ -30,7 +36,7 @@ def profile(request):
     }
 
     return render(request, template, context)
-
+    
 
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
