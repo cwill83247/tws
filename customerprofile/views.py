@@ -47,3 +47,25 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
+
+@login_required
+def new_profile(request):
+    """ create new Customer profile. """
+    profile = get_object_or_404(Customer, user=request.user)
+    if request.method == 'POST':
+        form = CustomerProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile created successfully')
+        else:
+            messages.error(request, 'Creation Failed. Please ensure the form is valid.')
+    else:
+        form = CustomerProfileForm(instance=profile)
+    
+
+    template = 'customerprofile/new_customerprofile.html'
+    context = {
+        'form': form,        
+    }
+
+    return render(request, template, context)    

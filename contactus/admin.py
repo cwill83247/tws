@@ -1,3 +1,14 @@
-from django.contrib import admin
+from django.contrib import admin#
+from .models import Contact   
 
-# Register your models here.
+class ContactAdmin(admin.ModelAdmin):
+    list_display = (
+    'full_name',
+    'email',
+    'date_created', 
+    )
+
+    ordering = ('date_created',)
+
+
+admin.site.register(Contact, ContactAdmin)

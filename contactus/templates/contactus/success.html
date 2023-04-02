@@ -19,8 +19,9 @@
         <div class="row">
             <div class="col">
                 <hr>
-                <h2 class="logo-font mb-4">Contact Us</h2>
-                <hr>                
+                <h2 class="logo-font mb-4">Thanks you for contacting us</h2>
+                <hr>  
+                <p>We will response as quickly as we can - we aim to repsond within 48hrs</p>              
             </div>
         </div>
         
@@ -35,17 +36,8 @@
                     <li><i class="fas fa-envelope p-2 fs-7 d-none d-sm-inline"></i>enquries@tws.com</li>
                   </ul>
                 </div>
-             <p>Our please complete the form below</p>
-            </div>
+             </div>
           </div>
-        <div class="row">
-            <div class="col-12 col-lg-6">               
-                <form class="mt-3" action="{% url 'contactus' %}" method="POST" id="contactus_form">
-                    {% csrf_token %}
-                    {{ form|crispy }}
-                    <button class="btn btn-dark text-uppercase float-right">Get in Touch</button>
-                </form>
-            </div>
-            </div>
+       
         </div>
 {% endblock %}        
