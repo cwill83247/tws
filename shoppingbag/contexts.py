@@ -33,10 +33,13 @@ def shoppingbag_contents(request):
         delivery = Decimal(settings.STANDARD_DELIVERY)
         free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
     else:
-        delivery = 11
-        free_delivery_delta = 0
+        delivery = 0
+        free_delivery_delta = 100
     
-    grand_total = delivery + total  
+    if christestgrabbedfromsessionaddincontext:                                                                         #2/4/23 IF logic if code has been used
+        grand_total = christestgrabbedfromsessionaddincontext + float(delivery)                                                      #2/4/23 IF logic if code has been used
+    else:                                                                                                                    #2/4/23 IF logic if code has been used
+        grand_total = delivery + total                                                                  # 2/4/23 orignal !!!1                             
 
     randomvalue = "chrisrandomvalue"                     #TESTING 
     
