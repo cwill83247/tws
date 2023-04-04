@@ -1,4 +1,15 @@
 
+.tws-logo {                                                /* NEEDS MEDIA QUERIES*/
+       
+    max-width:249px;
+    height:434px;
+    background-image: url('/media/tws_logo.PNG');
+    background-size: cover;
+    background-repeat: no-repeat;        
+    /**border-right: 0.2rem solid white;**/    
+        
+}    
+
 
 .main-hero {                                                /* NEEDS MEDIA QUERIES*/
        
