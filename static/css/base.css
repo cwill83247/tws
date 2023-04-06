@@ -170,3 +170,11 @@ body {
     color:blueviolet;
 }
 
+/** detailed product view **/
+
+.product-detail-wrapper {
+    /**background-color:grey;**/
+    padding-top:1rem;
+}
+
+
