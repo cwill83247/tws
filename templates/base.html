@@ -18,7 +18,7 @@
     
     {% block basecss %}
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
         {% endblock %}
 
@@ -93,12 +93,13 @@
          <div class="logo-header col col-2"><div class="tws-logo"></div></div>
          <div class="logo-header-centre col col-8"></div>
          <div class="logo-header-right col col-2">
-           <div class="shopping-basket-holder">
-            <i class="fas fa-shopping-cart fa-2x"></i>
-            <div class="logo-header-button-number">{{ product_count }}</div> 
-            <p>quantity: {{ product_count }}</p>
-            <p>total: {{ grand_total }}</p>
-           </div>  
+         <a href="{% url 'view_shoppingbag'%}"> 
+          <div class="shopping-basket-holder">
+            <i class="fas fa-shopping-cart fa-2x">
+            <span class="logo-header-button-number">{{ product_count }}</span> 
+            </i>           
+          </div> 
+         </a> 
          </div>
         </div>
             

@@ -12,7 +12,8 @@ body {
 
 
 .logo-header {
-    background-color:white;    
+    background-color:white;  
+    padding-top:16px;  
 }
 
 .logo-header-centre {
@@ -24,22 +25,23 @@ body {
 }
 
 .shopping-basket-holder {
-    margin-top:5px;
-    margin-right: 2px;
+    padding:20px;
+    margin-right: 0px;
+    color:black;
 }
 
 .logo-header-button-number {
-    background: hsla(208,8%,63%,.7);
+    background: hsla(32, 98%, 49%, 0.89);
     border-radius: 50%;
     color: #fff;
-    font-size: 13px;
-    font-weight: 700;
-    height: 19px;
-    line-height: 19px;
-    position: relative;
-    right: 11px;
-    top: 6px;
-    width: 19px;
+    font-size: 14px;
+    position:relative;
+    font-weight: 700;    
+    right: 14px;
+    top:-20px;     
+    padding:6px;
+    line-height:30px;
+    
 }
 
 .tws-logo {                                                /* NEEDS MEDIA QUERIES*/
@@ -57,7 +59,8 @@ body {
        
         max-width:1249px;
         height:434px;
-        background-image: url('/media/mainheroimage2.jpg');
+        /**background-image: url('/media/mainheroimage2.jpg');**/
+        background-image: url('/media/main_hero.png');
         background-size: cover;
         background-repeat: no-repeat;        
         border-right: 0.2rem solid white;    
@@ -72,7 +75,8 @@ body {
 
 .sub-hero {                                     /* NEEDS MEDIA QUERIES*/
     max-width:549px;
-    background: url('/media/helmet.jpg');
+    /**background: url('/media/helmet.jpg');**/
+    background: url('/media/IMG_3125.JPG');
     background-size: cover;
     transform-origin: 0px 0px;  
     border-right: 0.2rem solid white;  
@@ -117,5 +121,17 @@ body {
 .update-link,
 .remove-item {
     cursor: pointer;
+}
+ /** shop display **/
+.card-body {
+    background-color:black;
+}
+
+.card-body a {
+    text-decoration: none;
+}
+
+.card-title {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
