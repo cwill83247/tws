@@ -1,10 +1,13 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Roboto:wght@500&display=swap');
+
+
 
 body {
     font-family: 'Montserrat', sans-serif;
-    color:pink;    
+    /**background:linear-gradient(-90deg,black,#fff);    /*** UNSURE OF BAckGROUND **/
+    /**background-image:url('/media/mainheroimage_t0EdqG7.jpg');   /*** UNSURE OF BAckGROUND **/
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 
@@ -20,6 +23,24 @@ body {
     background-color:white;
 }
 
+.shopping-basket-holder {
+    margin-top:5px;
+    margin-right: 2px;
+}
+
+.logo-header-button-number {
+    background: hsla(208,8%,63%,.7);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    height: 19px;
+    line-height: 19px;
+    position: relative;
+    right: 11px;
+    top: 6px;
+    width: 19px;
+}
 
 .tws-logo {                                                /* NEEDS MEDIA QUERIES*/
        
