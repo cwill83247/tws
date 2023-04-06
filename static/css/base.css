@@ -1,19 +1,23 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Roboto:wght@500&display=swap');
+
 body {
-    font-family:Montserrat,Helvetica Neue,Arial,sans-serif;
-    color:pink;
+    font-family: 'Montserrat', sans-serif;
+    color:pink;    
 }
+
 
 .logo-header {
-    background-color:white;
-    
+    background-color:white;    
 }
+
 .logo-header-centre {
     background-color:white;
-
 }
+
 .logo-header-right {
-    background-color:pink;
+    background-color:white;
 }
 
 
@@ -24,12 +28,9 @@ body {
     background-image: url('/media/tws_logo.PNG');
     display: block;
     background-size:contain;
-    background-repeat:no-repeat;
-        
-    border-right: 0.2rem solid white;    
-        
+    background-repeat:no-repeat;        
+    border-right: 0.2rem solid white;            
 }    
-
 
 .main-hero {                                                /* NEEDS MEDIA QUERIES*/
        
@@ -39,8 +40,14 @@ body {
         background-size: cover;
         background-repeat: no-repeat;        
         border-right: 0.2rem solid white;    
-            
-    }    
+    }
+
+.main-hero h1 {
+    
+    font-family:Montserrat;
+    letter-spacing: -2px;
+    
+}
 
 .sub-hero {                                     /* NEEDS MEDIA QUERIES*/
     max-width:549px;
