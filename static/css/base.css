@@ -1,12 +1,32 @@
 
+body {
+    font-family:Montserrat,Helvetica Neue,Arial,sans-serif;
+    color:pink;
+}
+
+.logo-header {
+    background-color:white;
+    
+}
+.logo-header-centre {
+    background-color:white;
+
+}
+.logo-header-right {
+    background-color:pink;
+}
+
+
 .tws-logo {                                                /* NEEDS MEDIA QUERIES*/
        
-    max-width:249px;
-    height:434px;
+    max-width:300px;
+    height:100px;
     background-image: url('/media/tws_logo.PNG');
-    background-size: cover;
-    background-repeat: no-repeat;        
-    /**border-right: 0.2rem solid white;**/    
+    display: block;
+    background-size:contain;
+    background-repeat:no-repeat;
+        
+    border-right: 0.2rem solid white;    
         
 }    
 
