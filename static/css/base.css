@@ -70,8 +70,33 @@ body {
     
     font-family:Montserrat;
     letter-spacing: -2px;
+    padding: 12px;
+    font-size: 2rem;
     
 }
+.main-hero-text-overlay {
+    background-color:black;
+    position: relative;
+    box-sizing: content-box;
+    border-radius: 4%;
+    width: 280px;
+    height: auto;
+    left: 0px;
+    top: 10px;
+}
+.main-hero-text-overlay-tagline {
+    background-color:black;
+    position: relative;
+    box-sizing: content-box;
+    border-radius: 4%;
+    left: 0px;
+    bottom: -150px;  
+}
+.main-hero-text-overlay-tagline p {
+    padding: 12px;
+    color:white !important;
+}
+
 
 .sub-hero {                                     /* NEEDS MEDIA QUERIES*/
     max-width:549px;
@@ -122,9 +147,10 @@ body {
 .remove-item {
     cursor: pointer;
 }
- /** shop display **/
+ 
+/** shop display **/
 .card-body {
-    background-color:black;
+    background-color:white;
 }
 
 .card-body a {
@@ -132,6 +158,15 @@ body {
 }
 
 .card-title {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    color:rgb(0, 10, 10);
+    font-weight: 700;
+}
+.card-title h5 {
+    color:antiquewhite;
+    font-weight: 700;
+}
+.card-text p {
+    color:blueviolet;
 }
 
