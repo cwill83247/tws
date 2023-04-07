@@ -78,7 +78,7 @@ body {
     background-color:black;
     position: relative;
     box-sizing: content-box;
-    border-radius: 4%;
+    border-radius: 0%;
     width: 280px;
     height: auto;
     left: 0px;
@@ -109,7 +109,7 @@ body {
 }
 
 .showcase-1 {                                     /* NEEDS MEDIA QUERIES*/
-    background: url('/media/helmet.jpg');
+    background: url('/media/mximage.PNG');
     background-size: cover;
     transform-origin: 0px 0px;   
     height:400px;
@@ -118,8 +118,37 @@ body {
     border-right: 0.2rem solid white;  
 }
 
+.text-overlay-tagline {
+    background-color:black;
+    position: relative;
+    box-sizing: content-box;
+    border-radius: 0%;
+    border:#fff; 
+    border:2px;
+    left: 0px;
+    bottom: -350px;  
+}
+.text-overlay-tagline p {
+    padding: 12px;
+    color:white !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+
+}
+.text-overlay-tagline p a {
+    text-decoration: none !important;
+    color:white !important;
+} 
+
+.text-overlay-tagline p a:hover{
+    text-decoration: none !important;
+    color:rgb(243, 5, 5) !important;
+}    
+
+
 .showcase-2 {                                     /* NEEDS MEDIA QUERIES*/
-    background: url('/media/helmet.jpg');
+    background: url('/media/sponsoredridersrhys.PNG');
     background-size: cover;
     transform-origin: 0px 0px;   
     height:400px;
@@ -129,7 +158,7 @@ body {
 }
 
 .showcase-3 {                                     /* NEEDS MEDIA QUERIES*/
-    background: url('/media/helmet.jpg');
+    background: url('/media/ourstoreimage.PNG');
     background-size: cover;
     transform-origin: 0px 0px;   
     height:400px;
