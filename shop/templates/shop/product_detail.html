@@ -6,26 +6,28 @@
 <div class="product-detail-wrapper">
 <div class="row">  
   <div class="col-4">
-    <i class="fa fa-truck" aria-hidden="true"><span>Free Shipping order over £100</span></i>
-    <i class="fa fa-check" aria-hidden="true">Quality Products</i>
-    <h4>VAT included <i class="fa fa-credit-card" aria-hidden="true"></i></h4>
-
+    <div class="product-detail-right">
+      <p>Free Shipping orders over £100 <i class="fa fa-truck" aria-hidden="true"></i></p>
+      <p>Quality Products <i class="fa fa-check" aria-hidden="true"></i></p>
+      <p>VAT included <i class="fa fa-credit-card" aria-hidden="true"></i></p>
+    </div>
   </div>
   <div class="col-4">    
     <div class="image-container my-5"><img class="card-img-top" alt="..." src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}"></div>
   </div>
   <div class="col-4">     
     <div class="card-body">
-      <h5 class="card-title">{{ product.name }}</h5>
+      <h3 class="card-title">{{ product.name }}</h3>
       <p class="card-text">Rating:{{ product.customer_rating }}<br>
-        £{{ product.price }}</p>
-        {{ product.description }}
+        </p>
+        <p>{{ product.description }}</p>
+        <h3>£{{ product.price }}</h3>
     </div>              
     <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
     {% csrf_token %}
     <div class="form-row">
         <div class="col-12">
-            <p class="mt-3"><strong>Quantity2:</strong></p>
+            <p class="mt-3"><strong>Quantity:</strong></p>
             <div class="form-group w-50">
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -52,8 +54,10 @@
             </div>
         </div>
         <br>
-            <a href=""><span class="text-uppercase">Keep Shopping</span></a>
+           
             <input class="btn btn-success text-uppercase" type="submit" value="Add to Bag">
+            <p><a href=""><span class="text-uppercase">View Bag</span></a>
+            <a href=""><span class="text-uppercase">Keep Shopping</span></a></p>
         </div>
                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
     </div>

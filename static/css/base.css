@@ -174,7 +174,20 @@ body {
 
 .product-detail-wrapper {
     /**background-color:grey;**/
-    padding-top:1rem;
+    padding-top:2rem;
 }
 
+.product-detail-right {
+    /**background-color: black;**/
+    padding: 2rem;
+    /**color:#fff;***/
+    color:black;
+    border-radius: 5%;
+    border-color:black;
+    border:2px;
+}
 
+.product-detail-right .my-5 {                     /****ALIGN IMAGE BETTER **/
+    margin-top: 1rem!important;
+    margin-bottom: 1rem!important;
+}
