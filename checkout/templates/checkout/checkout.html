@@ -39,10 +39,11 @@
                </table> 
                <p class="my-0 small text-muted">Sub Total before shipping</p>
                <p>Total(Before any discount): £ {{total}}</p>
-               <p>Discount Code {{savings}}</p>
-               <p>Discounted Total ?{{christestgrabbedfromsession}} getafter: {{get_order_total_after_discount}}</p>
+               <p>Discount Code {{voucher_id.code}}</p>
+               <p>Total(discount applied) £{{christestgrabbedfromsessionaddincontext |floatformat:2}} </p>
                <p>Delivery £ {{delivery |floatformat:2}}</p>
                <p class="my-0 small text-muted">card will be charged:</p>
+               <!-- value used below to process stripe payment -->
                <p>Grand total: £ {{grand_total|floatformat:2}}</p>
                <p>£{{christestgrabbedfromsessionaddincontext |floatformat:2}}</p>
                <p>Adjust Bag BUTTON</p>

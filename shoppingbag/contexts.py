@@ -16,9 +16,11 @@ def shoppingbag_contents(request):
 
     bag = request.session.get('bag', {})
     # discount code /voucher
-    voucher_id = request.session.get('voucher_id')     ###22/3/23 Voucher
+    voucher_id = request.session.get('voucher_id')   
+
     christestgrabbedfromsessionaddincontext = request.session.get('christest')              # 31/3 TEST 
-    
+
+    print("a",christestgrabbedfromsessionaddincontext)
     for item_id, quantity in bag.items():
         product = get_object_or_404(Product, pk=item_id)
         total += quantity * product.price
@@ -53,6 +55,7 @@ def shoppingbag_contents(request):
         'grand_total': grand_total,   
         'randomvalue': randomvalue,      #TESTING
         'christestgrabbedfromsessionaddincontext': christestgrabbedfromsessionaddincontext,
+        'voucher_id':voucher_id,
         
     }    
     return context

@@ -23,6 +23,7 @@ def add_to_bag(request, item_id):
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     bag = request.session.get('bag', {})
+    
 
     if item_id in list(bag.keys()):
         bag[item_id] += quantity
@@ -39,6 +40,10 @@ def adjust_bag(request, item_id):
     product = get_object_or_404(Product, pk=item_id)   
     quantity = int(request.POST.get('quantity')) 
     bag = request.session.get('bag', {})                                 # added 13/3 @ 09:08  
+
+    # set discount to 0 when shopping bag is changed
+    request.session['christest'] = 0
+   
     if quantity > 0:
         bag[item_id] = quantity
         messages.success(request, f'Updated {product.name} quantity to {bag[item_id]}')
@@ -57,7 +62,7 @@ def remove_from_bag(request, item_id):
         bag.pop(item_id)
         messages.success(request, f'Removed {product.name} from your bag')
         request.session['bag'] = bag
-        
+
         return HttpResponse(status=200)  
 
     except Exception as e: 
