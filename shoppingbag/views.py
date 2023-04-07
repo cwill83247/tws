@@ -30,7 +30,6 @@ def add_to_bag(request, item_id):
         bag[item_id] = quantity
 
     request.session['bag'] = bag
-    print(request.session['bag'])
     messages.success(request, 'sucessfully added to your shopping bag')                                
     return redirect(redirect_url)
 
@@ -57,8 +56,8 @@ def remove_from_bag(request, item_id):
         product = get_object_or_404(Product, pk=item_id)      #here we addign the product variable so can be used... in our messages 
         bag.pop(item_id)
         messages.success(request, f'Removed {product.name} from your bag')
-
         request.session['bag'] = bag
+        
         return HttpResponse(status=200)  
 
     except Exception as e: 

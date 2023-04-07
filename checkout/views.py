@@ -33,7 +33,7 @@ def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
-    christestgrabbedfromsession = request.session.get('christest')              ####### 31/3 TEST
+    ##christestgrabbedfromsession = request.session.get('christest')               # 7/4/COMMEnTED OUT 
 
     if request.method == 'POST':
         bag = request.session.get('bag', {})
@@ -51,7 +51,7 @@ def checkout(request):
             'country': request.POST['country'],            
         }
 
-        order_form = OrderForm(form_data)   ## create an instanc eof order form and put data into it   
+        order_form = OrderForm(form_data)   ## create an instance of order form and put data into it   
         if order_form.is_valid():
             # print("errors", order_form.errors)            
             order = order_form.save()
@@ -135,7 +135,7 @@ def checkout(request):
         # secret below is returned from stripe payment intent
         # is used to create payment
         'client_secret': intent.client_secret, 
-        'christestgrabbedfromsession': christestgrabbedfromsession,                            #31/3      
+       # 'christestgrabbedfromsession': christestgrabbedfromsession,                      # 7/4/COMMEnTED OUT 
     }
     return render(request, template, context)
 
