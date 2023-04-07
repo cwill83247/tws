@@ -3,97 +3,94 @@
 
 {% block content%}
 <div class="container">
+<hr>  
 <h1>Shopping Bag</h1>
-<h2>total number of prpdcuts in cart {{product_count}}</h2>
-<h2>total price £{{total}}</h2>
-<p>voucher code applied{{code}}</p>
-<p>shopping bag items{{shoppingbag_items.product}}</p>
-<p>shopping bag contents{{shoppingbag_contents}}</p>
-
-{{ shoppingbag_items }}
+<hr>
   {% if shoppingbag_items %}                <!--variable referenced in context.py-->
-      <table class="shoppingbag_contents">  
+      <table class="table shoppingbag_contents">  
         <thead>
           <tr>
-            <th>Image</th>
             <th>Product</th>
-            <th>Quantity</th>
-            <th>Description Test</th>
-            <th>quantity</th>
-            <th>Price</th>
+            <th>Description</th>
+            <th>Quantity</th>            
+            <th>each</th>           
           </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
+        
           {% for item in shoppingbag_items %}  
-          <tr>
-                <td>some text</td>    
-                <td>{{ product.name }}</td>
-                <td>{{item.product.name}}</td>
-                <td>{{item.product.description}}</td>
-                <td>{{ item.quantity }}</td>  
-                <td>
-                  <!--Quantity selector -->
-                  <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <div class="input-group">
-                            <!-- decrease button-->                          
-                            <div class="input-group-prepend">
-                                <button class="decrement-qty btn btn-sm btn-black rounded-0" 
-                                    data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
-                                    <span>
-                                        <i class="fas fa-square-minus fa-sm"></i>
-                                    </span>
-                                </button>
-                            </div>
-                            <!-- quantity -->
-                            <input class="form-control form-control-sm qty_input" type="number"
-                                name="quantity" value="{{ item.quantity }}" min="1" max="99"
-                                data-item_id="{{ item.item_id }}"
-                                id="id_qty_{{ item.item_id }}">
-                            <!--increase button-->
-                            <div class="input-group-append">
-                                <button class="increment-qty btn btn-sm btn-black rounded-0"
-                                    data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
-                                    <span>
-                                        <i class="fa-solid fa-square-plus fa-sm"></i>
-                                    </span>
-                                </button>
-                            </div>                            
-                        </div>
-                    </div>
-                    <!--END Quantity selector -->
-                </form>
-                
-                <a class="update-link text-info"><small>Update</small></a>
-                  <td><a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}"><small>Remove</small></a></td>
-                </td> 
+          <tr>            
+            <td>{{item.product.name}}</td>
+            <td>{{item.product.description}}</td>
+            <td>
+                <!--Quantity selector -->
+                <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
+                  {% csrf_token %}
+                  <div class="form-group">
+                      <div class="input-group">
+                          <!-- decrease button-->                          
+                          <div class="input-group-prepend">
+                              <button class="decrement-qty btn btn-sm btn-black rounded-0" 
+                                  data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                  <span>
+                                      <i class="fas fa-square-minus fa-sm"></i>
+                                  </span>
+                              </button>
+                          </div>
+                          <!-- quantity -->
+                          <input class="form-control form-control-sm qty_input" type="number"
+                              name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                              data-item_id="{{ item.item_id }}"
+                              id="id_qty_{{ item.item_id }}">
+                          <!--increase button-->
+                          <div class="input-group-append">
+                              <button class="increment-qty btn btn-sm btn-black rounded-0"
+                                  data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                  <span>
+                                      <i class="fa-solid fa-square-plus fa-sm"></i>
+                                  </span>
+                              </button>
+                          </div>                            
+                      </div>
+                  </div>
+                  <!--END Quantity selector -->
+              </form>                
+              <a class="update-link text-info"><small>Update</small></a><a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}"><small>Remove</small></a>
+            </td> 
+            <td>£{{item.product.price}}</td>
           </tr>
           {% endfor %}
-         <!--- Discount/Voucher Code-->                                    <!--- Troubleshoot OUTPUT these to console !!!-->
+         
+          <!--- Discount/Voucher Code-->                                    
          {% if code %}
          <tr class="subtotal">
            <td>Subtotal</td>
-           <td colspan="4"></td>
-           <td class="num">£{{ get_order_total|floatformat:2 }}</td>
+           <td colspan="2"></td>
+           <td class="num">£{{ total|floatformat:2 }}</td>
          </tr>
          <tr>
            <td>
              "{{ code }}" applied"
              ({{ amountpercentage }}% off)
            </td>
-           <td colspan="4"></td>
+           <td colspan="2"></td>
            <td class="num neg">
-             - £{{ savings|floatformat:2 }}                       <!-- this is calling a function to apply-->
+             - £{{ savings|floatformat:2 }}                       
            </td>
-         </tr>
-       {% endif %}
+          </tr>
+           <td>Total</td>
+         <td colspan="2"> </td>
+         <td class="num">£{{ christestgrabbedfromsessionaddincontext|floatformat:2 }}</td> 
+        
+       
+       {% else %}
        <tr class="total">
          <td>Total</td>
-         <td colspan="4"></td>
+         <td colspan="2"> </td>
          <td class="num">
-           £{{ get_order_total_after_discount|floatformat:2 }}
+           £{{ total|floatformat:2 }}
          </td> 
+         {% endif %}  
         </tbody>
       </table>
 
@@ -103,17 +100,16 @@
         <input type="submit" value="Apply">
         {% csrf_token %}
       </form>
-      <a href="{% url 'checkout' %}" class="btn btn-black rounded-0 btn-lg">
+      <br>
+      <a href="{% url 'checkout' %}" class="btn btn-dark rounded-0 btn-lg">
         <span class="text-uppercase">Secure Checkout</span>
         <span class="icon">
             <i class="fas fa-lock"></i>
         </span>
     </a>
   {% else %}
-  <h2>shoppinf bag is empty</h2>
+  <h2>shoppinr bag is empty</h2>
   {% endif %}    
-
-</div>
   {% endblock %}
   {% block postloadjs %}
   {{ block.super }}

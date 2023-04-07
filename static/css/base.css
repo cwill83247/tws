@@ -189,8 +189,9 @@ body {
     text-transform: uppercase;
     font-weight:600;
     font-size: 1.5rem;
-}
+    
 
+}
 
 .card-body {
     background-color:white;
@@ -251,4 +252,19 @@ body {
 .product-detail-right .my-5 {                     /****ALIGN IMAGE BETTER **/
     margin-top: 1rem!important;
     margin-bottom: 1rem!important;
+}
+
+/*** Shopping Bag ****/
+
+.form-control form-control-sm qty_input {
+    color:#ff4368;
+}
+
+.update-link {
+    font-size:1rem;
+    margin:0.2rem;
+}
+.update-link a {
+    font-size:1rem;
+    margin:0.2rem;
 }
