@@ -2,8 +2,10 @@
 {% load static %}
 
 {% block content%}
-<div class="container">
-<h1>prpdcut list .html page</h1>
+<div class="container product-list-wrapper">
+<hr>
+<h1>Because shredding on your own just isn't as fun.</h1>
+<hr>
 <div class="row row-cols-4 row-cols-md-4 g-4">
   {% for product in products %}       
   <div class="col">
@@ -12,14 +14,15 @@
       <img class="card-img-top" alt="..." src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}"> 
       <div class="card-body">
         <h5 class="card-title">{{ product.name }}</h5>
-        <p class="card-text">Rating:{{ product.customer_rating }}<br>
-          £{{ product.price }}</p>
-          <a href="{% url 'product_detail' product.id %}">More Info - Prpdcuts Details</a>
+        <p class="card-text">Rating:{{ product.customer_rating }}</p>
+          <p class="card-text-price">£{{ product.price }}</p>
+          <p class="card-text-more-info"><a href="{% url 'product_detail' product.id %}">more info - Product Details</a></p>
         </a>
       </div>
     </div> 
-  </div>         
+  </div>          
          {% endfor %}
   </div>
 </div>
+
   {% endblock %}

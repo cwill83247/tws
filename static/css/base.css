@@ -10,6 +10,7 @@ body {
     background-size: cover;
 }
 
+/** Logo and Navigation ***/
 
 .logo-header {
     background-color:white;  
@@ -55,6 +56,8 @@ body {
     border-right: 0.2rem solid white;            
 }    
 
+
+/***Home Page ****/
 .main-hero {                                                /* NEEDS MEDIA QUERIES*/
        
         max-width:1249px;
@@ -177,13 +180,25 @@ body {
     cursor: pointer;
 }
  
-/** shop display **/
+/****** shop display *********/
+
+.product-list-wrapper {
+    background-color:white;
+}
+.product-list-wrapper h1 {
+    text-transform: uppercase;
+    font-weight:600;
+    font-size: 1.5rem;
+}
+
+
 .card-body {
     background-color:white;
 }
 
 .card-body a {
     text-decoration: none;
+    color:black;
 }
 
 .card-title {
@@ -197,6 +212,23 @@ body {
 }
 .card-text p {
     color:blueviolet;
+}
+
+.card-text-price {
+    color: #ff4368;
+    font-style: italic;
+    display:flex;
+    /*background-color: bisque;*/
+    /*padding:0.5rem;**/
+    font-weight:600;
+    font-size:1.5rem ;
+}
+.card-text-more-info a {
+    color:white !important;
+    display:flex;
+    background-color:black; 
+    padding:0.2rem;
+    
 }
 
 /** detailed product view **/
