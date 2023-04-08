@@ -101,10 +101,8 @@
           </div> 
          </a> 
          </div>
-        </div>
-            
-            
-            
+        </div>    
+                      
             </div>
           </div>
           <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">         
@@ -121,9 +119,8 @@
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
               <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
             </a>
-    
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="#" class="nav-link px-2 text-white">Home</a></li>
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li><a href="{% url 'home'%}" class="nav-link px-2 text-white">Home</a></li>
               <li><a href="{% url 'product_list'%}" class="nav-link px-2 text-white ">Shop</a></li>
               <li><a href="#" class="nav-link px-2 text-white">Our Story</a></li>
               <li><a href="{% url 'view_shoppingbag'%}" class="nav-link px-2 text-white">View Bag</a></li>
@@ -138,7 +135,7 @@
               {% if request.user.is_superuser %}
                 <a href="{% url 'product_admin' %}" class="btn btn-primary" role="button" aria-pressed="true">Manage Shop</a>
               {% endif %}      
-            <a href="{% url 'profile' %}" class="btn btn-primary" role="button" aria-pressed="true">My Details</a>  
+            <a href="{% url 'profile' %}" class="btn btn-primary" role="button" aria-pressed="true">My Profile</a>  
             <a href="{% url 'account_logout' %}" class="btn btn-primary" role="button" aria-pressed="true">Logout</a>  
             {% else %}                
                 <a href="{% url 'account_login' %}" class="btn btn-primary" role="button" aria-pressed="true">Sign In</a>  
