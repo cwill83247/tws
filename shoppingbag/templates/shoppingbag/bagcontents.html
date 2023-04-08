@@ -4,7 +4,7 @@
 {% block content%}
 <div class="container">
 <hr>  
-<h1>Shopping Bag</h1>
+<h2>Shopping Bag</h2>
 <hr>
   {% if shoppingbag_items %}                <!--variable referenced in context.py-->
       <table class="table shoppingbag_contents">  
@@ -95,7 +95,7 @@
       </table>
 
       <p>Have a Discount Code ?</p>
-      <form action= "{% url 'apply_voucher'%}" method="post">                   <!--submit for Voucher-->
+      <form action= "{% url 'apply_voucher'%}" method="post">                   
         {{ apply_coupon_form }}
         <input type="submit" value="Apply">
         {% csrf_token %}
@@ -117,10 +117,8 @@
     
     // Update quantity on click
     $('.update-link').click(function(e) {
-        var form = $(this).prev('.update-form');                           //temp showing line 32 downwards
-        form.submit();
-        console.log('here when click adding ');                                //TEMP !!!!!!!
-        console.log({'blah id':itemId});                                      //TEMP !!!!!!! 
+        var form = $(this).prev('.update-form');                          
+        form.submit();                                                                   
     })
 
     // Remove item and reload on click
@@ -130,9 +128,7 @@
         var url = `/shoppingbag/remove/${itemId}/`;
         var size = $(this).data('product_size');
         var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
-        console.log('here when clociking remove');                             //TEMP !!!!!!!
-        console.log({'blah id':itemId});                                       //TEMP !!!!!!!
-        
+                
         $.post(url, data)
          .done(function() {
              location.reload();

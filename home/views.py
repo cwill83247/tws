@@ -8,3 +8,8 @@ def index(request):
 
     return render(request, 'home/index.html')
 
+
+def ourstory(request):
+    """view to return home app > ourstory """
+
+    return render(request, 'home/ourstory.html')
