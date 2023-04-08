@@ -18,7 +18,7 @@
         <div class="row">
             <!--Order Summary -->
             <div class="col-4">
-              <p>order summary</p>
+              <h5>Order Summary</h5>
               <table class="table checkout_order_summary"> 
                 <thead>
                     <tr>
@@ -37,27 +37,30 @@
                 {% endfor %}       
                 </tbody>
                </table> 
-               <p class="my-0 small text-muted">Sub Total before shipping</p>
-               <p>Total(Before any discount): £ {{total}}</p>
-               <p>Discount Code {{voucher_id.code}}</p>
-               <p>Total(discount applied) £{{christestgrabbedfromsessionaddincontext |floatformat:2}} </p>
-               <p>Delivery £ {{delivery |floatformat:2}}</p>
+               {% if christestgrabbedfromsessionaddincontext%}                          <!---8/4/23 -->
+                <p class="my-0 small text-muted">Sub Total before shipping</p>
+                <p>Sub Total: £ {{total}}</p>
+                <p>Total(discount applied): £{{christestgrabbedfromsessionaddincontext |floatformat:2}} </p>
+               {% else %}
+                <p>Total: £ {{total}}</p>
+               {% endif %} 
+
+               <p>Delivery: £ {{delivery |floatformat:2}}</p>
                <p class="my-0 small text-muted">card will be charged:</p>
                <!-- value used below to process stripe payment -->
                <p>Grand total: £ {{grand_total|floatformat:2}}</p>
-               <p>£{{christestgrabbedfromsessionaddincontext |floatformat:2}}</p>
-               <p>Adjust Bag BUTTON</p>
+               <p><a href="">Keep shopping</a> <a href="">Adjust Bag</a></p>
                 
             </div>                                  
 
             
             <div class="col-8">
-            <p>"Please complete your order"</p>
+            <h5>Please complete your order</h5>
            
             <form action ="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
-                <p>----Your Contact and delivery details</p>
-                <p>Currently - shipping in only available in the Unitied Kingdom</p>
+                <p>Enter your contact and delivery details</p>
+                <p>Currently - shipping only available in the United Kingdom</p>
                 {{ order_form.email | as_crispy_field }}
                 {{ order_form.phone_number | as_crispy_field }}
                 {{ order_form.first_name | as_crispy_field }}
@@ -78,8 +81,10 @@
                 </div>
                 <div id="card-element">stripe should be here </div>
                  <!-- Display stripe related error message to customers here -->
-                <div class="mb-3 text-danger" id="card-errors" role="alert">card erro</div>
-                <button id="submit-button">Place your Order</button>
+                <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                <button class="btn btn-dark rounded-0 btn-lg" id="submit-button">Place your Order<span class="icon">
+                    <i class="fas fa-lock"></i>
+                </span></button>
                 </form>
             </div>
         </div>

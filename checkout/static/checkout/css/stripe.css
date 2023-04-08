@@ -38,7 +38,7 @@ Stripe specific CSS styling from Code Institue and Stripe documentation
 #payment-form .form-control,
 #card-element {
     color: #000;
-    border: 1px solid #000;
+    
 }
 
 /* when payment is being processed overlays whilst its connecting to stripe
