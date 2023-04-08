@@ -23,21 +23,13 @@ def apply_voucher(request):
 
             bag = request.session.get('bag')                       
             current_bag = shoppingbag_contents(request)
-            get_order_total = current_bag['total']
-            print('valid code')  
-            savings = (voucher.amountpercentage / Decimal(100)) * get_order_total
-            print("savings",savings)                        
+            get_order_total = current_bag['total']            
+            savings = (voucher.amountpercentage / Decimal(100)) * get_order_total                                  
             get_order_total_after_discount = get_order_total - savings
-            get_order_total_after_discount = float(get_order_total_after_discount)   #31/3 had to convert to float otherwise gettign JSon seralize errors
-            print("total after discount", get_order_total_after_discount) 
-            request.session['christest'] = get_order_total_after_discount             #31/3 TEST
-            christestgrabbedfromsession = request.session.get('christest')              # 31/3 TEST
-            print("value form session", christestgrabbedfromsession)                # 31/3 TEST
-                                  
-            print(code)
-            print(voucher.expiry_date)
-            print(voucher.amountpercentage)
-           
+            get_order_total_after_discount = float(get_order_total_after_discount)   
+            request.session['christest'] = get_order_total_after_discount            
+            christestgrabbedfromsession = request.session.get('christest')            
+                       
         except Voucher.DoesNotExist:
             request.session['voucher_id'] = None
             print('invalid code')                     
