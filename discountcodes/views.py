@@ -27,8 +27,8 @@ def apply_voucher(request):
             savings = (voucher.amountpercentage / Decimal(100)) * get_order_total                                  
             get_order_total_after_discount = get_order_total - savings
             get_order_total_after_discount = float(get_order_total_after_discount)   
-            request.session['christest'] = get_order_total_after_discount            
-            christestgrabbedfromsession = request.session.get('christest')            
+            request.session['christest'] = get_order_total_after_discount                              ## RENAME      
+            christestgrabbedfromsession = request.session.get('christest')                             ## RENAME        
                        
         except Voucher.DoesNotExist:
             request.session['voucher_id'] = None
