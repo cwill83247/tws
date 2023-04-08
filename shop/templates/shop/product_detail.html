@@ -56,8 +56,8 @@
         <br>
            
             <input class="btn btn-success text-uppercase" type="submit" value="Add to Bag">
-            <p><a href=""><span class="text-uppercase">View Bag</span></a>
-            <a href=""><span class="text-uppercase">Keep Shopping</span></a></p>
+            <p><a href="{% url 'view_shoppingbag'%}"><span class="text-uppercase">View Bag</span></a>
+            <a href="{% url 'product_list'%}"><span class="text-uppercase">Keep Shopping</span></a></p>
         </div>
                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
     </div>

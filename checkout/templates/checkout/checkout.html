@@ -49,7 +49,7 @@
                <p class="my-0 small text-muted">card will be charged:</p>
                <!-- value used below to process stripe payment -->
                <p>Grand total: £ {{grand_total|floatformat:2}}</p>
-               <p><a href="">Keep shopping</a> <a href="">Adjust Bag</a></p>
+               <p><a href="{% url 'product_list'%}">Keep shopping</a> <a href="{% url 'view_shoppingbag'%}">Adjust Bag</a></p>
                 
             </div>                                  
 
