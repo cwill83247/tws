@@ -13,3 +13,10 @@ def ourstory(request):
     """view to return home app > ourstory """
 
     return render(request, 'home/ourstory.html')
+
+
+def sponsoredriders(request):
+    """view to return home app > spomsoredriders """
+
+    return render(request, 'home/sponsoredriders.html')
+

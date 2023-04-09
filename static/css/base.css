@@ -271,6 +271,30 @@ body {
     border-right: 0.2rem solid white;  
 }
 
+/***Sponsored Riders  ***/
+
+.rider-1 {                                     /* NEEDS MEDIA QUERIES*/
+    background: url('/media/mximage.PNG');
+    background-size: cover;
+    transform-origin: 0px 0px;   
+    height: 300px;;
+    background-repeat:no-repeat;
+    max-width:600px;
+    border-top: 0.2rem solid white;  
+    border-right: 0.2rem solid white;  
+}
+
+.rider-2 {                                     /* NEEDS MEDIA QUERIES*/
+    background: url('/media/sponsored_katie.PNG');
+    background-size: cover;
+    transform-origin: 0px 0px;   
+    height: 300px;;
+    background-repeat:no-repeat;
+    max-width:600px;
+    border-top: 0.2rem solid white;  
+    border-right: 0.2rem solid white;  
+}
+
 /**** footer ****/
 .tws-footer {
     
