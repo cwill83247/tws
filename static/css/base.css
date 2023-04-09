@@ -271,7 +271,13 @@ body {
     border-right: 0.2rem solid white;  
 }
 
-
+/**** footer ****/
+.tws-footer {
+    
+    background-image: url('/media/footerimagebw_small.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 
 /*** General ****/
 
