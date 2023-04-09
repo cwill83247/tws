@@ -322,7 +322,7 @@ body {
 .main-hero {                                                /* NEEDS MEDIA QUERIES*/
        
     max-width:1249px;
-    height:234px;    
+    height:250px;    
     background-image: url('/media/main_hero.png');
     background-size: contain;
     background-repeat: no-repeat;        
@@ -361,15 +361,30 @@ body {
 .sub-hero {                                     
     height:250px;
     max-width:1249px;    
-    background: url('/media/mobileimage_ourstory_small.png');
+    /**background: url('/media/mobileimage_ourstory_small.png');**/
+    background-image: url('/media/main_hero.png');
     background-repeat: no-repeat;
-    background-size:cover;
+    /**background-size:cover;  **/
+    background-size:contain;
     transform-origin: 0px 0px;  
-    border-right: 0.2rem solid white;  
-    
+    border-right: 0.2rem solid white;     
 }
+.sub-hero .text-overlay-tagline {
+    background-color:pink;
+    position: relative;
+    box-sizing: content-box;
+    border-radius: 0%;
+    border:#fff; 
+    border:1px;
+    left: 0px;
+    bottom: -200px;  
+}
+.col-6 {
+        width:100%;
+}
+         
 
-}
+} /** end of media query **/ 
 
 @media screen and (max-width: 764px){
 
