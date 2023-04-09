@@ -102,7 +102,6 @@ body {
 
 .sub-hero {                                     /* NEEDS MEDIA QUERIES*/
     max-width:549px;
-    /**background: url('/media/helmet.jpg');**/
     background: url('/media/IMG_3125.JPG');
     background-size: cover;
     transform-origin: 0px 0px;  
@@ -316,18 +315,58 @@ body {
  /**RESPONSIVE CHANGES -  *****/
 
 /*********** For medium screens sizes less than 950px but bigger than 800px otherwise media query below wil kick in  *********/
+
 @media screen and (max-width: 480px){
 
     /***Home Page ****/
 .main-hero {                                                /* NEEDS MEDIA QUERIES*/
        
     max-width:1249px;
-    height:434px;
-    /**background-image: url('/media/mainheroimage2.jpg');**/
+    height:234px;    
     background-image: url('/media/main_hero.png');
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;        
-    border-right: 0.2rem solid white;    
+   
+}
+.main-hero-text-overlay {    
+    position: relative;
+    box-sizing: content-box;
+    border-radius: 0%;    
+    width: 200px;
+    
+}
+
+.main-hero-text-overlay h1 {
+    font-size:20px;
+    letter-spacing: -1px;
+
+}    
+.main-hero-text-overlay-tagline {
+    visibility:hidden;
+    background-color:black;
+    position: relative;
+    box-sizing: content-box;
+    border-radius: 4%;
+    left: 50px;
+    top: 150px;    
+}
+.main-hero-text-overlay-tagline p {
+    padding: 12px;
+    color:white !important;
+}
+.btn-online-shop {
+    position:relative;
+    top:-100px;
+}
+.sub-hero {                                     
+    height:250px;
+    max-width:1249px;    
+    background: url('/media/mobileimage_ourstory_small.png');
+    background-repeat: no-repeat;
+    background-size:cover;
+    transform-origin: 0px 0px;  
+    border-right: 0.2rem solid white;  
+    
 }
 
 }
