@@ -260,6 +260,21 @@ body {
     color:#ff4368;
 }
 
+/***Contact Us ****/
+.contactus-image {                                     /* NEEDS MEDIA QUERIES*/
+    background: url('/media/IMG_3143.JPG');
+    background-size: cover;
+    transform-origin: 0px 0px;   
+    height:400px;
+    max-width:600px;
+    border-top: 0.2rem solid white;  
+    border-right: 0.2rem solid white;  
+}
+
+
+
+/*** General ****/
+
 .update-link {
     font-size:1rem;
     margin:0.2rem;
