@@ -1,11 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Roboto:wght@500&display=swap');
 
-
-
 body {
     font-family: 'Montserrat', sans-serif;
-    /**background:linear-gradient(-90deg,black,#fff);    /*** UNSURE OF BAckGROUND **/
-    /**background-image:url('/media/mainheroimage_t0EdqG7.jpg');   /*** UNSURE OF BAckGROUND **/
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -45,7 +41,7 @@ body {
     
 }
 
-.tws-logo {                                                /* NEEDS MEDIA QUERIES*/
+.tws-logo {                                                
        
     max-width:300px;
     height:100px;
@@ -56,9 +52,9 @@ body {
     border-right: 0.2rem solid white;            
 }    
 
-
 /***Home Page ****/
-.main-hero {                                                /* NEEDS MEDIA QUERIES*/
+
+.main-hero {                                                
        
         max-width:1249px;
         height:434px;
@@ -100,7 +96,7 @@ body {
 }
 
 
-.sub-hero {                                     /* NEEDS MEDIA QUERIES*/
+.sub-hero {                                    
     max-width:549px;
     background: url('/media/IMG_3125.JPG');
     background-size: cover;
@@ -109,7 +105,7 @@ body {
     
 }
 
-.showcase-1 {                                     /* NEEDS MEDIA QUERIES*/
+.showcase-1 {                                     
     background: url('/media/mximage.PNG');
     background-size: cover;
     transform-origin: 0px 0px;   
@@ -148,7 +144,7 @@ body {
 }    
 
 
-.showcase-2 {                                     /* NEEDS MEDIA QUERIES*/
+.showcase-2 {                                     
     background: url('/media/sponsoredridersrhys.PNG');
     background-size: cover;
     transform-origin: 0px 0px;   
@@ -158,7 +154,7 @@ body {
     border-right: 0.2rem solid white;  
 }
 
-.showcase-3 {                                     /* NEEDS MEDIA QUERIES*/
+.showcase-3 {                                     
     background: url('/media/ourstoreimage.PNG');
     background-size: cover;
     transform-origin: 0px 0px;   
@@ -186,9 +182,7 @@ body {
 .product-list-wrapper h1 {
     text-transform: uppercase;
     font-weight:600;
-    font-size: 1.5rem;
-    
-
+    font-size: 1.5rem;  
 }
 
 .card-body {
@@ -233,21 +227,18 @@ body {
 /** detailed product view **/
 
 .product-detail-wrapper {
-    /**background-color:grey;**/
     padding-top:2rem;
 }
 
 .product-detail-right {
-    /**background-color: black;**/
     padding: 2rem;
-    /**color:#fff;***/
     color:black;
     border-radius: 5%;
     border-color:black;
     border:2px;
 }
 
-.product-detail-right .my-5 {                     /****ALIGN IMAGE BETTER **/
+.product-detail-right .my-5 {                     
     margin-top: 1rem!important;
     margin-bottom: 1rem!important;
 }
@@ -259,7 +250,7 @@ body {
 }
 
 /***Contact Us ****/
-.contactus-image {                                     /* NEEDS MEDIA QUERIES*/
+.contactus-image {                                     
     background: url('/media/IMG_3143.JPG');
     background-size: cover;
     transform-origin: 0px 0px;   
@@ -271,7 +262,7 @@ body {
 
 /***Sponsored Riders  ***/
 
-.rider-1 {                                     /* NEEDS MEDIA QUERIES*/
+.rider-1 {                                     
     background: url('/media/mximage.PNG');
     background-size: cover;
     transform-origin: 0px 0px;   
@@ -282,7 +273,7 @@ body {
     border-right: 0.2rem solid white;  
 }
 
-.rider-2 {                                     /* NEEDS MEDIA QUERIES*/
+.rider-2 {                                     
     background: url('/media/sponsored_katie.PNG');
     background-size: cover;
     transform-origin: 0px 0px;   
@@ -312,7 +303,7 @@ body {
     margin:0.2rem;
 }
 
- /**RESPONSIVE CHANGES -  *****/
+ /**RESPONSIVE CHANGES *****/
 
 @media screen and (max-width: 480px){
 
@@ -384,7 +375,7 @@ body {
 }
          
 
-} /** end of media query **/ 
+} /** end of media query (max-width: 480px) **/ 
 
 
 @media screen and (max-width: 768px){
@@ -453,7 +444,7 @@ body {
     .col-6 {
             width:100%;
     } 
-}
+}    /** end of media query (max-width: 768px) **/ 
 
 @media screen and (max-width: 1024px){
 
@@ -528,18 +519,18 @@ body {
         height:400px;
         max-width:1200px;        
     }
-   .showcase-2 {                                     /* NEEDS MEDIA QUERIES*/
+   .showcase-2 {                                     
         
     background-size: cover;
     transform-origin: 0px 0px;   
     height:400px;
     max-width:1200px;        
     }
-    .showcase-3 {                                     /* NEEDS MEDIA QUERIES*/
+    .showcase-3 {                                    
         
         background-size: cover;
         transform-origin: 0px 0px;   
         height:400px;
         max-width:1200px;        
         }
-}
+}  /** end of media query (max-width: 1024px) **/ 
