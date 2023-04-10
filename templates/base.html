@@ -117,38 +117,32 @@
                   <li><a href="{% url 'ourstory'%}" class="nav-link px-2 text-white">Our Story</a></li>
                   <li><a href="{% url 'view_shoppingbag'%}" class="nav-link px-2 text-white">View Bag</a></li>
                   <li><a href="{% url 'contactus'%}" class="nav-link px-2 text-white">Get in Touch</a></li>
-            </ul>
-                                                                                                        
-           
-            <div class="text-end">
-            {% if user.is_authenticated %} 
-              {% if request.user.is_superuser %}
-                <a href="{% url 'product_admin' %}" class="btn btn-primary" role="button" aria-pressed="true">Manage Shop</a>
-              {% endif %}      
-            <a href="{% url 'profile' %}" class="btn btn-primary" role="button" aria-pressed="true">My Profile</a>  
-            <a href="{% url 'account_logout' %}" class="btn btn-primary" role="button" aria-pressed="true">Logout</a>  
-            {% else %}                
-                <a href="{% url 'account_login' %}" class="btn btn-primary" role="button" aria-pressed="true">Sign In</a>  
-                <a href="{% url 'account_signup' %}" class="btn btn-warning" role="button" aria-pressed="true">Sign Up</a>
-            {% endif %}                
-
+                </ul>                                                                                                        
+                <div class="text-end">
+                  {% if user.is_authenticated %} 
+                    {% if request.user.is_superuser %}
+                      <a href="{% url 'product_admin' %}" class="btn btn-primary" role="button" aria-pressed="true">Manage Shop</a>
+                    {% endif %}      
+                  <a href="{% url 'profile' %}" class="btn btn-primary" role="button" aria-pressed="true">My Profile</a>  
+                  <a href="{% url 'account_logout' %}" class="btn btn-primary" role="button" aria-pressed="true">Logout</a>  
+                  {% else %}                
+                    <a href="{% url 'account_login' %}" class="btn btn-primary" role="button" aria-pressed="true">Sign In</a>  
+                    <a href="{% url 'account_signup' %}" class="btn btn-warning" role="button" aria-pressed="true">Sign Up</a>
+                  {% endif %}        
               </div>
           </div>
-        </div>
-     
-      </header>
-          
-      <div class="b-example-divider"></div>
-     
+        </div>     
+      </header>          
+     <div class="b-example-divider"></div>
+  
 <div class="container">    
-
-    <!-- Placeholder for messages from DJANGO-->
-    {% if messages %}
-      <div class="message-container">
-          {% for message in messages %}
-              <p>{{ message }}</p>
-          {% endfor %}
-      </div>
+  <!-- Placeholder for messages from DJANGO-->
+  {% if messages %}
+    <div class="message-container">
+      {% for message in messages %}
+        <p>{{ message }}</p>
+      {% endfor %}
+    </div>
   {% endif %}
 </div>  
 
@@ -167,16 +161,14 @@
 
     {% endblock %}
 
-    <div class="container">
-      
+    <div class="container">      
       <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
         <div class="col-md-4 d-flex align-items-center">
           <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
             <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
           </a>
           <span class="mb-3 mb-md-0 text-muted">&copy; 2022 TWS - Together we Shred</span>
-        </div>
-    
+        </div>    
         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
           <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
           <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
@@ -184,7 +176,5 @@
         </ul>
       </footer>
     </div>
-  
-
   </body>
 </html>
