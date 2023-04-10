@@ -9,7 +9,7 @@ class OrderForm(forms.ModelForm):
                   'street_address1', 'street_address2',
                   'town_or_city', 'postcode', 'country',)
 
-    # advanced form customisation from Code Institute 
+    """ advanced form customisation from Code Institute """ 
     def __init__(self, *args, **kwargs):
         """
         Override the Default init method so we can

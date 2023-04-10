@@ -8,15 +8,14 @@ from django_countries.fields import CountryField
 from customerprofile.models import Customer
 
 
-# Order 
+""" for processing Order""" 
 class Order(models.Model):
-    order_number = models.CharField(max_length=200, null=True, editable=False)             ## 18/3/23 Need ot Add Discount code and Store the Ammount of Discount 
-    # below can be access due to related_name by - user.customer.orders
+    order_number = models.CharField(max_length=200, null=True, editable=False)             
     user_profile = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
     first_name = models.CharField(max_length=200, null=True)
     surname = models.CharField(max_length=200, null=True)
     email = models.EmailField() 
-    phone_number = models.CharField(max_length=20, null=True, blank=False)                 #set Null=True on alot of fields whilst one migration -----
+    phone_number = models.CharField(max_length=20, null=True, blank=False)                 
     street_address1 = models.CharField(max_length=80, null=True , blank=False)
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
     town_or_city = models.CharField(max_length=40, null=True, blank=False)
@@ -45,7 +44,7 @@ class Order(models.Model):
         """
         return uuid.uuid4().hex.upper()  
 
-    def update_total(self):                                                             ## 18/3/23 ADD Logic for Discount or create another Function that runs Prior !!
+    def update_total(self):                                                            
         """
         Update grand total within this class above each time a line item is added,
         including delivery costs.
@@ -64,23 +63,20 @@ class Order(models.Model):
         if it doesnt have one.
         """
         if not self.order_number:
-            self.order_number = self._generate_order_number()  #calls generate order function 
+            self.order_number = self._generate_order_number()  
         super().save(*args, **kwargs)
 
     def __str__(self):
         return self.order_number
 
     def get_total_cost(self):
-        return sum(item.get_cost() for item in self.items.all())    
-
-    # need to add in link for stripe so can store payment ID use of webhooks to confirm payment          
+        return sum(item.get_cost() for item in self.items.all())  
 
 
-#each item added to the Order 
 class OrderItem(models.Model):
+    """""each item added to the Order""" 
     order = models.ForeignKey(Order, related_name='lineitems',on_delete=models.CASCADE)
     product = models.ForeignKey(Product, related_name='order_items',on_delete=models.CASCADE)
-    #price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.PositiveIntegerField(default=1)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 
