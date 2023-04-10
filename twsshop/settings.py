@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-v^ynslhzfidy@acca6vj0d&%suk__2+-o(gjbgw09xfd*@lz0@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['tws.herokuapp.com', 'localhost']
 
 CSRF_TRUSTED_ORIGINS = ["https://8000-cwill83247-tws-7trz5n9eoma.ws-eu93.gitpod.io", "https://www.8000-cwill83247-tws-t9qu1ypeu3s.ws-eu88.gitpod.io", "https://8000-cwill83247-tws-t9qu1ypeu3s.ws-eu89b.gitpod.io"]
 
@@ -109,7 +109,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Adding Email Verification for AllAUTH
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_VERIFICATION = 'none'                       # changed from mandatory 10/4/23
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
@@ -124,12 +124,17 @@ SHOPPINGBAG_SESSION_ID = 'bag'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.sqlite3',
-       'NAME': BASE_DIR / 'db.sqlite3',
-   }
-}
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }    
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
