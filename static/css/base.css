@@ -404,6 +404,55 @@ body {
         border-right: 0.2rem solid white;      
     
     }    
+    .main-hero {                                                
+       
+        max-width:1249px;
+        height:250px;    
+        background-image: url('/media/main_hero.png');
+        background-size: cover;
+        background-repeat: no-repeat;        
+       
+    }
+    .main-hero-text-overlay {    
+        position: relative;
+        box-sizing: content-box;
+        border-radius: 0%;    
+        width: 200px;
+        
+    }
+    
+    .main-hero-text-overlay h1 {
+        font-size:20px;
+        letter-spacing: -1px;
+    
+    }    
+    .main-hero-text-overlay-tagline {
+        visibility:hidden;
+        
+    }
+    .main-hero-text-overlay-tagline p {
+        padding: 12px;
+        color:white !important;
+    }
+    .btn-online-shop {
+        position:relative;
+        top:-100px;
+    }
+    .sub-hero {                                     
+        height:250px;
+        max-width:649px;    
+        background: url('/media/IMG_3113.JPG');
+        background-repeat: no-repeat;
+        background-size:cover;
+        transform-origin: 0px 0px;  
+        border-right: 0.2rem solid white;     
+    }
+    .sub-hero .text-overlay-tagline {
+        bottom: -180px;  
+    }
+    .col-6 {
+            width:100%;
+    } 
 }
 
 @media screen and (max-width: 1024px){
@@ -423,4 +472,4 @@ body {
         border-right: 0.2rem solid white;      
     
     }    
-}
+}   
