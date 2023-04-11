@@ -7,12 +7,15 @@ from shoppingbag import views
 from shoppingbag import contexts
 from shoppingbag.contexts import shoppingbag_contents
 from decimal import Decimal
+from django.contrib import messages
 # Create your views here.
 
 @require_POST
 def apply_voucher(request):
     now = timezone.now()
     form = DiscountVoucherForm(request.POST)
+
+    voucher = None  # 11/4/23 Invalid voucher issue 
     
     if form.is_valid():
         code = form.cleaned_data['code']
@@ -32,15 +35,18 @@ def apply_voucher(request):
                        
         except Voucher.DoesNotExist:
             request.session['voucher_id'] = None
-            print('invalid code')                     
-      
-    context = {
-        'voucher.id': voucher.id,
-        'code': code,
-        'amountpercentage': voucher.amountpercentage,
-        'savings': savings,
-        'get_order_total_after_discount': get_order_total_after_discount,
-        
-    }
+            print('invalid code')
+            messages.error(request, 'Sorry, Invalid or Expired Code.')                     
+
+    context = {}                                                                                            # 11/4 added
+    if voucher is not None:                                                                                 # 11/4 added         
+        context = {
+            'voucher.id': voucher.id,
+            'code': code,
+            'amountpercentage': voucher.amountpercentage,
+            'savings': savings,
+            'get_order_total_after_discount': get_order_total_after_discount,
+            
+        }
     return render(request, 'shoppingbag/bagcontents.html', context)             
 
