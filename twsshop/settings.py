@@ -26,12 +26,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
 #DEBUG = 'DEVELOPMENT' in os.environ
 DEBUG = True
 
 ALLOWED_HOSTS = ['tws.herokuapp.com', 'localhost']
 
-CSRF_TRUSTED_ORIGINS = ["https://tws.herokuapp.com","https://8000-cwill83247-tws-7trz5n9eoma.ws-eu93.gitpod.io", "https://www.8000-cwill83247-tws-t9qu1ypeu3s.ws-eu88.gitpod.io", "https://8000-cwill83247-tws-t9qu1ypeu3s.ws-eu89b.gitpod.io"]
+CSRF_TRUSTED_ORIGINS = ["https://tws.herokuapp.com", "https://8000-cwill83247-tws-7trz5n9eoma.ws-eu93.gitpod.io", "https://www.8000-cwill83247-tws-t9qu1ypeu3s.ws-eu88.gitpod.io", "https://8000-cwill83247-tws-t9qu1ypeu3s.ws-eu89b.gitpod.io"]
 
 # Application definition
 
@@ -202,7 +203,6 @@ if 'USE_AWS' in os.environ:
     # Override static and media URLs in production
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
-
 
 
 # Stripe Specific settings
