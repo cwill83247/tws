@@ -14,8 +14,7 @@ from django.contrib import messages
 def apply_voucher(request):
     now = timezone.now()
     form = DiscountVoucherForm(request.POST)
-
-    voucher = None  # 11/4/23 Invalid voucher issue 
+    voucher = None  
     
     if form.is_valid():
         code = form.cleaned_data['code']
@@ -30,16 +29,18 @@ def apply_voucher(request):
             savings = (voucher.amountpercentage / Decimal(100)) * get_order_total                                  
             get_order_total_after_discount = get_order_total - savings
             get_order_total_after_discount = float(get_order_total_after_discount)   
-            request.session['christest'] = get_order_total_after_discount                              ## RENAME      
-            christestgrabbedfromsession = request.session.get('christest')                             ## RENAME        
+            #request.session['christest'] = get_order_total_after_discount                     11/4/23 naming so more meaningful now happy working 
+            request.session['discountedtotal_session'] = get_order_total_after_discount                                
+            #christestgrabbedfromsession = request.session.get('christest')                     11/4/23 naming so more meaningful now happy working                  
+            discountedtotal = request.session.get('discountedtotal_session')                                
                        
         except Voucher.DoesNotExist:
             request.session['voucher_id'] = None
             print('invalid code')
             messages.error(request, 'Sorry, Invalid or Expired Code.')                     
 
-    context = {}                                                                                            # 11/4 added
-    if voucher is not None:                                                                                 # 11/4 added         
+    context = {}                                                                                            
+    if voucher is not None:                                                                                
         context = {
             'voucher.id': voucher.id,
             'code': code,

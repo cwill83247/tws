@@ -18,9 +18,8 @@ def shoppingbag_contents(request):
     # discount code /voucher
     voucher_id = request.session.get('voucher_id')   
 
-    christestgrabbedfromsessionaddincontext = request.session.get('christest')              # 31/3 TEST 
-
-    print("a",christestgrabbedfromsessionaddincontext)
+    discountedtotalcontext = request.session.get('discountedtotal_session')            
+    
     for item_id, quantity in bag.items():
         product = get_object_or_404(Product, pk=item_id)
         total += quantity * product.price
@@ -38,13 +37,12 @@ def shoppingbag_contents(request):
         delivery = 0
         free_delivery_delta = 100
     
-    if christestgrabbedfromsessionaddincontext:                                                                         #2/4/23 IF logic if code has been used
-        grand_total = christestgrabbedfromsessionaddincontext + float(delivery)                                                      #2/4/23 IF logic if code has been used
+    #if christestgrabbedfromsessionaddincontext: 
+    if discountedtotalcontext:                                                                        #2/4/23 IF logic if code has been used
+        grand_total = discountedtotalcontext + float(delivery)                                                      #2/4/23 IF logic if code has been used
     else:                                                                                                                    #2/4/23 IF logic if code has been used
-        grand_total = delivery + total                                                                  # 2/4/23 orignal !!!1                             
-
-    randomvalue = "chrisrandomvalue"                     #TESTING 
-    
+        grand_total = delivery + total                                                                               
+      
     context = {
         'shoppingbag_items': shoppingbag_items, 
         'total': total,
@@ -53,9 +51,8 @@ def shoppingbag_contents(request):
         'free_delivery_delta': free_delivery_delta,
         'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
         'grand_total': grand_total,   
-        'randomvalue': randomvalue,      #TESTING
-        'christestgrabbedfromsessionaddincontext': christestgrabbedfromsessionaddincontext,
-        'voucher_id':voucher_id,
+        'discountedtotalcontext': discountedtotalcontext,
+        'voucher_id': voucher_id,
         
     }    
     return context

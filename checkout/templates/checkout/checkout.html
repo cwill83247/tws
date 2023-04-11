@@ -38,10 +38,10 @@
                 </tbody>
             </table> 
 
-            {% if christestgrabbedfromsessionaddincontext%}                         
+            {% if discountedtotalcontext%}                         
             <p class="my-0 small text-muted">Sub Total before shipping</p>
             <p>Sub Total: £ {{total}}</p>
-            <p>Total(discount applied): £{{christestgrabbedfromsessionaddincontext |floatformat:2}} </p>
+            <p>Total(discount applied): £{{ discountedtotalcontext |floatformat:2}} </p>
             {% else %}
             <p>Total: £ {{total}}</p>
             {% endif %} 
