@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Contact(models.Model):
     """
     This Model will allow the user to contact

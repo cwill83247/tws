@@ -6,5 +6,5 @@ from .models import Voucher
 @admin.register(Voucher)
 class VoucherAdmin(admin.ModelAdmin):
     list_display = ['code', 'description',
-                    'amountpercentage', 'expiry_date','active'] 
+                    'amountpercentage', 'expiry_date', 'active']
     search_fields = ['code']

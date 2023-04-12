@@ -9,7 +9,7 @@ class OrderForm(forms.ModelForm):
                   'street_address1', 'street_address2',
                   'town_or_city', 'postcode', 'country',)
 
-    """ advanced form customisation from Code Institute """ 
+    """ advanced form customisation from Code Institute """
     def __init__(self, *args, **kwargs):
         """
         Override the Default init method so we can
@@ -17,9 +17,9 @@ class OrderForm(forms.ModelForm):
         labels and set autofocus on email field
         """
         super().__init__(*args, **kwargs)
-        """ 
-        changing so names appear more 
-        user friendly on the form to its Db field name 
+        """
+        changing so names appear more
+        user friendly on the form to its Db field name
         """
         placeholders = {
             'first_name': 'First Name',
@@ -31,11 +31,11 @@ class OrderForm(forms.ModelForm):
             'town_or_city': 'Town or City',
             'street_address1': 'Street and house number',
             'street_address2': 'Street Address 2',
-            
-        }  
+
+        }
         """
         adding * on required fields
-        setting focus on email field 
+        setting focus on email field
         1st on the form
         """
         self.fields['email'].widget.attrs['autofocus'] = True

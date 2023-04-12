@@ -3,8 +3,9 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
 
-# use for Stripe Webhooks
+
 class StripeWH_Handler:
+    """used for Stripe Webhooks"""
 
     def __init__(self, request):
         self.request = request
@@ -18,14 +19,14 @@ class StripeWH_Handler:
         body = render_to_string(
             'checkout/confirmation_emails/confirmation_email_body.txt',
             {'order': order})
-        
+
         """ sending the mail """
         send_mail(
             subject,
             body,
             settings.DEFAULT_FROM_EMAIL,
             [cust_email]
-        )             
+        )
 
     def handle_event(self, event):
         """
@@ -40,19 +41,18 @@ class StripeWH_Handler:
         payment_intent.succeeded - Stripe
         """
         intent = event.data.object
-        if intent.mode == 'payment' and intent.payment_status == 'succeeded':              # strip 31/3/23
-            try:                                                                            # strip 31/3/23
-                order = Order.objects.get(id=session.client_reference_id)               # strip 31/3/23
-            except Order.DoesNotExist:                                                      # strip 31/3/23
-                return HttpResponse(status=404)                                         # strip 31/3/23
-            order.paid = True                                                       # strip 31/3/23
-            order.save()                                                            # strip 31/3/23   
+        if intent.mode == 'payment' and intent.payment_status == 'succeeded':
+            try:
+                order = Order.objects.get(id=session.client_reference_id)
+            except Order.DoesNotExist:
+                return HttpResponse(status=404)
+            order.paid = True
+            order.save()
 
-        self._send_confirmation_email(order)                                                 ######  Send Confrimation email 1/4/23
+        self._send_confirmation_email(order)
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
             status=200)
-            
 
     def handle_payment_intent_payment_failed(self, event):
         """
@@ -60,4 +60,4 @@ class StripeWH_Handler:
         """
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
-            status=200)        
+            status=200)

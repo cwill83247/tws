@@ -4,8 +4,6 @@ from django.dispatch import receiver
 from .models import OrderItem
 
 
-# on add,increase or delete items form shopping bag 
-#run the below function(s) - is available across project.
 @receiver(post_save, sender=OrderItem)
 def update_on_save(sender, instance, created, **kwargs):
     """
@@ -19,6 +17,6 @@ def update_on_save(sender, instance, created, **kwargs):
 @receiver(post_delete, sender=OrderItem)
 def update_on_delete(sender, instance, **kwargs):
     """
-    Update order total when item is deleted from shopping bag 
+    Update order total when item is deleted from shopping bag
     """
     instance.order.update_total()

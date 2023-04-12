@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Customer   #importing customer class form mdoels.py 
+from .models import Customer
 
 
 class CustomerAdmin(admin.ModelAdmin):
@@ -9,12 +9,11 @@ class CustomerAdmin(admin.ModelAdmin):
         'street_address1',
         'street_address2',
         'town_or_city',
-        #'county',
         'postcode',
         'country',
     )
 
     ordering = ('user',)
 
-admin.site.register(Customer, CustomerAdmin)
 
+admin.site.register(Customer, CustomerAdmin)

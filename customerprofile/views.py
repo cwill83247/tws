@@ -15,11 +15,9 @@ def profile(request):
     except Http404:
         return redirect('new_profile/')
 
-                                        
-    print("logged in as:", profile)                     
     if request.method == 'POST':
         form = CustomerProfileForm(request.POST, instance=profile)
-        if form.is_valid():            
+        if form.is_valid():
             form.save()
             messages.success(request, 'Profile updated successfully')
         else:
@@ -36,7 +34,7 @@ def profile(request):
     }
 
     return render(request, template, context)
-    
+
 
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
@@ -57,24 +55,24 @@ def order_history(request, order_number):
 
 @login_required
 def new_profile(request):
-    """ create new Customer profile. """        
+    """ create new Customer profile. """
     if request.method == 'POST':
         form = CustomerProfileForm(request.POST)
         if form.is_valid():
             profile = form.save(commit=False)
             """ set the user to account logged in"""
-            profile.user = request.user  
+            profile.user = request.user
             profile.save()
-            
+
             messages.success(request, 'Profile created successfully')
         else:
             messages.error(request, 'Creation Failed. Please ensure the form is valid.')
-    else:                         
-        form = CustomerProfileForm()         
-    
+    else:
+        form = CustomerProfileForm()
+
     template = 'customerprofile/new_customerprofile.html'
     context = {
-        'form': form,        
+        'form': form,
     }
 
-    return render(request, template, context)    
+    return render(request, template, context)
