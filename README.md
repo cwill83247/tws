@@ -3,31 +3,72 @@
 # TWS -Together we Shred
 
 # IMAGE OF SCREENS
-
-## Project Goals 
-Together We Shred is a full stack e-commerce website built using Django, Python, HTML, CSS and JavaScript. The website uses Stripe as the payment processor.
-It was developed for my final assignment to showcase the skills I have learnt during the Code Institute Level 5 Diploma course.
-The ecommerce site, had to meet, and represent the brand, be of high quality and have potential to be used to help improve TWS Owners business and increase ability to generate income. 
-
-
 ## Design Brief
 The site was created to support my nephews (will refer to as TWS Owner)  new business - TWS (Together we Shred). It is a lifestyle clothing brand aimed at the motocross and mountain biking community. The range of clothing is designed to be comfortable, practicable, of a high quality but also have an image that represents the customers in the motocross and mountain biking community, and make people want to but the brand based on its image.  He is very much trying to create a brand, the shared love of getting out and riding together and sharing those experiences.The company is active on Instagram and Facebook however lacks an ecommerce presence. 
 
 ## Early Challenge Identified as part of brief
 Ensuring that the ecommerce site reflects the brand, shows that I have developed this myself, and can demonstrate my skills and not just follow the boutique_ado site, and make small amendments.  I did question if I should do a different site but it was important to me to try and deliver an ecommerce site that could with some minor work be used in the real world, and was a real use case. 
 
-# Strategy Plane
+# Strategy Plane - UX
+## Project Goals 
+Together We Shred is a full stack e-commerce website built using Django, Python, HTML, CSS and JavaScript. The website uses Stripe as the payment processor.
+It was developed for my final assignment to showcase the skills I have learnt during the Code Institute Level 5 Diploma course.
+The ecommerce site, had to meet, and represent the brand, be of high quality and have potential to be used to help improve TWS Owners business and increase ability to generate income. 
 
-# Scope Plane
 
-# Structure Plane
+# Scope Plane - UX
+I have tried to plan the site, from a user perspective and administrative perspective. 
+This will then lead me to design my Database Schema, allow me to identify priorities for the project from a TWS Owner , Administrator of site and customer perspective.
 
-# Skeleton Plane
+Priorities and requirements may change later on, to ensure I meet the criteria of the Assignment as well as TWS Owners  requirements. 
+
+Importance 1 - 5 with    
+1 being nice to have 
+5 being essential
+
+To enable me to develop a MVP, Focus of user stories was those with a priority of 4 and 5, I also added the User Story ID 11 even though a priority of 3, to satisfy the need for additional unique models as part of the course requirements.
+
+| ID | Process          | As A/An  | I Need To Be Able To                              | So That I Can                                                                                       | Importance |
+|----|------------------|----------|---------------------------------------------------|-----------------------------------------------------------------------------------------------------|------------|
+| 1  | Site             | Customer | Understand purpose of site quickly and clearly    | Decide if I am on the correct site and suits my needs                                               | 5          |
+| 2  | Product          | Customer | Browse the site easily                            | Find products quickly and easily                                                                    | 5          |
+| 3  | Product          | Customer | Filter Products                                   | Find products based on category i.e hoodies, hats.                                                  | 3          |
+| 4  | Product detail   | Customer | View detailed information about specific products | So I can see more details about the product, and a larger more detailed image.                      | 5          |
+| 5  | Purchase         | Customer | Add Items to shopping bag                         | Store these for purchase                                                                            | 5          |
+| 6  | Purchase         | Customer | Increase and decrease quantities easily           | So that I can quickly purchase more of the same item, or reduce the number of items                 | 5          |
+| 7  | Purchase         | Customer | See total of items in shopping bag                | Identify how much I am currently spending                                                           | 4          |
+| 8  | Purchase         | Customer | Remove items from shopping bag                    | In case I decide I no longer want these items                                                       | 4          |
+| 9  | Checkout/Payment | Customer | Items purchasing, and total amount to pay         | Checkout quickly and easily                                                                         | 5          |
+| 10 | Checkout/Payment | Customer | Pay for items securely                            | Have confidence that my order, and money is processed safely.                                       | 5          |
+| 11 | Checkout/Payment | Customer | Add a voucher code                                | So that I can apply a discount to my order                                                          | 3          |
+| 12 | Checkout/Payment | Customer | Receive payment and order on-screen feedback      | Confident that payment has been processed and order is being processed                              | 4          |
+| 13 | Checkout/Payment | Customer | Receive confirmation email                        | Confident of items ordered, amount paid and have contact details of the company in case of queries. | 4          |
+| 14 | User Profile     | Customer | Register for an Account                           | So I can store my address details                                                                   | 5          |
+| 15 | User Profile     | Customer | Login / Logout                                    | Keep my personal information secure                                                                 | 5          |
+| 16 | User Profile     | Customer | View My Profile                                   | View details I have stored with the site                                                            | 5          |
+| 17 | User Profile     | Customer | Edit My Profile                                   | I can update my address, for example                                                                | 5          |
+| 18 | User Profile     | Customer | Login with Social media account                   | So I can be quickly and easily registered with the site                                             | 2          |
+| 19 | Product Admin    | Admin    | Show/Highlight Popular Items                      | To tempt people into buying these items                                                             | 2          |
+| 20 | Product Admin    | Admin    | Add Products                                      | Add new products to the website quickly and easily for customers to view                            | 5          |
+| 21 | Product Admin    | Admin    | Edit Products                                     | Edit details of existing products, for example if other colours become available, or price changes. | 5          |
+| 22 | Product Admin    | Admin    | Delete Products                                   | Remove products that no longer sell                                                                 | 5          |
+| 23 | Marketing        | Admin    | Send promotional emails                           | To encourage customers to purchase and shop with us                                                 | 3          |
+| 24 | Marketing        | Admin    | Understand shopping trends                        | So the brand can move with the times and produce more of the products customers want                | 3          |
+
+# Structure Plane - UX
+
+## Site flow diagram 
+## table showing functions allowed for different roles  i. e registered user store address details, view past orders etc.. 
+## db schema
+
+
+# Skeleton Plane - UX
 ## wireframes
 
-# Surface Plane
+# Surface Plane - UX
 ## colour scheme
 ## font choice
+## design choices 
 
 # Testing 
 ## lightohose
@@ -44,7 +85,16 @@ Ensuring that the ecommerce site reflects the brand, shows that I have developed
 # future devlelopments
 
 # credits and thanks 
+My Nephew(Rhys Railey)
+for allowing me to prpdcut this for his brand
 
+Code Institute
+Basis of project was from Task project as part of my CI course
+
+Spence Bariball (Mentor)
+Helping to keep me motivated, and being supportive throughout.
+
+Tutor Assistance
 
 
 
