@@ -1,12 +1,53 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-Welcome cwill83247,
+# TWS -Together we Shred
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+# IMAGE OF SCREENS
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+## Project Goals 
+Together We Shred is a full stack e-commerce website built using Django, Python, HTML, CSS and JavaScript. The website uses Stripe as the payment processor.
+It was developed for my final assignment to showcase the skills I have learnt during the Code Institute Level 5 Diploma course.
+The ecommerce site, had to meet, and represent the brand, be of high quality and have potential to be used to help improve TWS Owners business and increase ability to generate income. 
 
-## Gitpod Reminders
+
+## Design Brief
+The site was created to support my nephews (will refer to as TWS Owner)  new business - TWS (Together we Shred). It is a lifestyle clothing brand aimed at the motocross and mountain biking community. The range of clothing is designed to be comfortable, practicable, of a high quality but also have an image that represents the customers in the motocross and mountain biking community, and make people want to but the brand based on its image.  He is very much trying to create a brand, the shared love of getting out and riding together and sharing those experiences.The company is active on Instagram and Facebook however lacks an ecommerce presence. 
+
+## Early Challenge Identified as part of brief
+Ensuring that the ecommerce site reflects the brand, shows that I have developed this myself, and can demonstrate my skills and not just follow the boutique_ado site, and make small amendments.  I did question if I should do a different site but it was important to me to try and deliver an ecommerce site that could with some minor work be used in the real world, and was a real use case. 
+
+# Strategy Plane
+
+# Scope Plane
+
+# Structure Plane
+
+# Skeleton Plane
+## wireframes
+
+# Surface Plane
+## colour scheme
+## font choice
+
+# Testing 
+## lightohose
+## css, html, JS, Python test
+
+## Testing user stories  
+
+# technologies used
+
+## issues
+
+# deployment
+
+# future devlelopments
+
+# credits and thanks 
+
+
+
+
 
 To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
