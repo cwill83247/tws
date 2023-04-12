@@ -4,10 +4,9 @@ from .forms import ProductForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
 
 # List of All Products
-def product_list(request):    #passingin category so can filter
+def product_list(request):   
     category = None
     categories = Category.objects.all()
     products = Product.objects.all()
@@ -22,7 +21,6 @@ def product_list(request):    #passingin category so can filter
 
 
 # Product Details 
-
 def product_detail(request, id):
     product = get_object_or_404(Product, id=id)                 
     context = {                                                                 
@@ -30,6 +28,7 @@ def product_detail(request, id):
     }
 
     return render(request, 'shop/product_detail.html', context)                
+
 
 # Manage Products (Admin Only)
 @login_required
@@ -58,9 +57,9 @@ def add_product(request):
     return render(request, template, context)        
 
 
-""" Edit product needs product id """
 @login_required
 def edit_product(request, product_id):
+    """ Edit product needs product id """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only Adminstrators can do this.')
         return redirect(reverse('home'))
@@ -88,9 +87,10 @@ def edit_product(request, product_id):
 
     return render(request, template, context)
 
-""" Delete product needs product id """
+
 @login_required
 def delete_product(request, product_id):
+    """ Delete product needs product id """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only Adminstrators can do this.')
         return redirect(reverse('home'))
@@ -101,8 +101,8 @@ def delete_product(request, product_id):
     return redirect(reverse('product_admin'))
 
 
-""" Product Admin """
-def product_admin(request):    
+def product_admin(request): 
+    """ Product Admin """   
     category = None
     categories = Category.objects.all()
     products = Product.objects.all()

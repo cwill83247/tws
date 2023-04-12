@@ -27,12 +27,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-#DEBUG = 'DEVELOPMENT' in os.environ
+# DEBUG = 'DEVELOPMENT' in os.environ
 DEBUG = True
 
 ALLOWED_HOSTS = ['tws.herokuapp.com', 'localhost']
 
-CSRF_TRUSTED_ORIGINS = ["https://tws.herokuapp.com", "https://8000-cwill83247-tws-7trz5n9eoma.ws-eu93.gitpod.io", "https://www.8000-cwill83247-tws-t9qu1ypeu3s.ws-eu88.gitpod.io", "https://8000-cwill83247-tws-t9qu1ypeu3s.ws-eu89b.gitpod.io"]
+CSRF_TRUSTED_ORIGINS = ["https://tws.herokuapp.com","https://8000-cwill83247-tws-7trz5n9eoma.ws-eu93.gitpod.io"]
 
 # Application definition
 
@@ -86,7 +86,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'shoppingbag.contexts.shoppingbag_contents', # to enable shoppingbag_contents across the site > shoppingbag/contexts.py
+                'shoppingbag.contexts.shoppingbag_contents',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
@@ -112,7 +112,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Adding Email Verification for AllAUTH
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'none'                       # changed from mandatory 10/4/23
+ACCOUNT_EMAIL_VERIFICATION = 'none'                      
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'

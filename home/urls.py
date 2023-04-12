@@ -1,7 +1,5 @@
 # home app urls.py
-
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path 
 from . import views
 
 urlpatterns = [
@@ -9,4 +7,3 @@ urlpatterns = [
     path('ourstory/', views.ourstory, name='ourstory'),  
     path('sponsoredriders/', views.sponsoredriders, name='sponsoredriders'),  
 ]
-

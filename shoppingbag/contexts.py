@@ -1,11 +1,8 @@
 
-#making my shopping bag contents across the whole site
 from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from shop.models import Product
-from discountcodes.forms import DiscountVoucherForm
-from discountcodes import views
 
 
 def shoppingbag_contents(request):
@@ -24,7 +21,7 @@ def shoppingbag_contents(request):
         product = get_object_or_404(Product, pk=item_id)
         total += quantity * product.price
         product_count += quantity
-        shoppingbag_items.append({       # adding items into our shopping bag dictonairy 
+        shoppingbag_items.append({       
             'item_id': item_id,
             'quantity': quantity,
             'product': product,
@@ -37,10 +34,9 @@ def shoppingbag_contents(request):
         delivery = 0
         free_delivery_delta = 100
     
-    #if christestgrabbedfromsessionaddincontext: 
-    if discountedtotalcontext:                                                                        #2/4/23 IF logic if code has been used
-        grand_total = discountedtotalcontext + float(delivery)                                                      #2/4/23 IF logic if code has been used
-    else:                                                                                                                    #2/4/23 IF logic if code has been used
+    if discountedtotalcontext:                                                                       
+        grand_total = discountedtotalcontext + float(delivery)                                                  
+    else:                                                                                                               
         grand_total = delivery + total                                                                               
       
     context = {
@@ -56,3 +52,4 @@ def shoppingbag_contents(request):
         
     }    
     return context
+    
