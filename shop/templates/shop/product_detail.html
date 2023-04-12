@@ -23,7 +23,7 @@
         <p>{{ product.description }}</p>
         <h3>£{{ product.price }}</h3>
     </div>              
-    <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
+  <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
     {% csrf_token %}
     <div class="form-row">
         <div class="col-12">
@@ -58,14 +58,12 @@
             <input class="btn btn-success text-uppercase" type="submit" value="Add to Bag">
             <p><a href="{% url 'view_shoppingbag'%}"><span class="text-uppercase">View Bag</span></a>
             <a href="{% url 'product_list'%}"><span class="text-uppercase">Keep Shopping</span></a></p>
-        </div>
-                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+      </div>
+            <input type="hidden" name="redirect_url" value="{{ request.path }}">
     </div>
-  </form>             
-     
-         
+  </form>              
   </div>
 </div>
-</div> </div>
+</div> <!-- STRAY 12/4/23 </div> -->
 
   {% endblock %}
