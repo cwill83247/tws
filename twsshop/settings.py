@@ -32,7 +32,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['tws.herokuapp.com', 'localhost']
 
-CSRF_TRUSTED_ORIGINS = ["https://tws.herokuapp.com","https://8000-cwill83247-tws-7trz5n9eoma.ws-eu93.gitpod.io"]
+CSRF_TRUSTED_ORIGINS = ["https://tws.herokuapp.com", "https://8000-cwill83247-tws-7trz5n9eoma.ws-eu93.gitpod.io"]
 
 # Application definition
 
@@ -102,7 +102,7 @@ AUTHENTICATION_BACKENDS = (
 
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
-)    
+)
 
 
 SITE_ID = 1
@@ -112,7 +112,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Adding Email Verification for AllAUTH
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'none'                      
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
@@ -130,7 +130,7 @@ SHOPPINGBAG_SESSION_ID = 'bag'
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-    }    
+    }
 else:
     DATABASES = {
         'default': {
@@ -180,7 +180,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 if 'USE_AWS' in os.environ:
-    
+
     # Cache control
     AWS_S3_OBJECT_PARAMETERS = {
         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',

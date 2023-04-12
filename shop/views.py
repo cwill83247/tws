@@ -1,12 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Category, Product
-from .forms import ProductForm 
+from .forms import ProductForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 
-# List of All Products
-def product_list(request):   
+def product_list(request):
+    """ List of All Products"""
     category = None
     categories = Category.objects.all()
     products = Product.objects.all()
@@ -17,27 +17,26 @@ def product_list(request):
                   'shop/product_list.html',
                   {'category': category,
                    'categories': categories,
-                   'products': products}) 
+                   'products': products})
 
 
-# Product Details 
 def product_detail(request, id):
-    product = get_object_or_404(Product, id=id)                 
-    context = {                                                                 
+    """Product Details"""
+    product = get_object_or_404(Product, id=id)
+    context = {
         'product': product,
     }
 
-    return render(request, 'shop/product_detail.html', context)                
+    return render(request, 'shop/product_detail.html', context)
 
 
-# Manage Products (Admin Only)
 @login_required
 def add_product(request):
-    
+    """Manage Products (Admin Only)"""
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only Adminstrators can do this.')
         return redirect(reverse('home'))
-        
+
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -47,14 +46,14 @@ def add_product(request):
         else:
             messages.error(request, 'Failed to add product.- Please try again')
     else:
-        form = ProductForm()  
-                
+        form = ProductForm()
+
     template = 'shop/add_product.html'
     context = {
         'form': form,
     }
 
-    return render(request, template, context)        
+    return render(request, template, context)
 
 
 @login_required
@@ -95,14 +94,14 @@ def delete_product(request, product_id):
         messages.error(request, 'Sorry, only Adminstrators can do this.')
         return redirect(reverse('home'))
 
-    product = get_object_or_404(Product, pk=product_id)   
+    product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('product_admin'))
 
 
-def product_admin(request): 
-    """ Product Admin """   
+def product_admin(request):
+    """ Product Admin """
     category = None
     categories = Category.objects.all()
     products = Product.objects.all()
@@ -113,4 +112,4 @@ def product_admin(request):
                   'shop/productadmin_list.html',
                   {'category': category,
                    'categories': categories,
-                   'products': products}) 
+                   'products': products})
