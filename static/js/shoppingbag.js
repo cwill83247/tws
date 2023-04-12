@@ -1,4 +1,3 @@
-console.log('Testing my shopping bag.js file ')
 
 //Credit Code Institute - Boutique ADO project
  // Disable +/- buttons outside 1-99 range
@@ -31,7 +30,7 @@ $('.increment-qty').click(function(e) {
    $(closestInput).val(currentValue + 1);
    var itemId = $(this).data('item_id');
    handleEnableDisable(itemId);
-   console.log('in the shoppinbag js increment')
+   
 });
 
 // Decrement quantity
@@ -55,7 +54,7 @@ for (var i= 0; i < addEventHandlertoBtns.length; i++){
     addEventHandlertoBtns[i].addEventListener('click',function(){
        var productId =this.dataset.product
        var action =this.dataset.action
-       console.log('productId:', productId, 'action:', action) 
+       
 
 //check if user is logged in        
        console.log('User:', user)
