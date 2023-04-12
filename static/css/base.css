@@ -211,8 +211,6 @@ body {
     color: #ff4368;
     font-style: italic;
     display:flex;
-    /*background-color: bisque;*/
-    /*padding:0.5rem;**/
     font-weight:600;
     font-size:1.5rem ;
 }
@@ -512,7 +510,7 @@ body {
     .col-6 {
             width:100%;
     } 
-    .showcase-1 {                                     /* NEEDS MEDIA QUERIES*/
+    .showcase-1 {                                    
         
         background-size: cover;
         transform-origin: 0px 0px;   
