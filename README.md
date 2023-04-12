@@ -1,8 +1,7 @@
-![CI logo](/all-devices-black)
+![CI logo](media/all-devices-black.png)
 
 # TWS -Together we Shred
 
-# IMAGE OF SCREENS
 ## Design Brief
 The site was created to support my nephews (will refer to as TWS Owner)  new business - TWS (Together we Shred). It is a lifestyle clothing brand aimed at the motocross and mountain biking community. The range of clothing is designed to be comfortable, practicable, of a high quality but also have an image that represents the customers in the motocross and mountain biking community, and make people want to but the brand based on its image.  He is very much trying to create a brand, the shared love of getting out and riding together and sharing those experiences.The company is active on Instagram and Facebook however lacks an ecommerce presence. 
 
