@@ -96,6 +96,9 @@ I created some inital wireframes for the main areas of the site, and would use t
 TWS Owner provided several websites that they like the look off, however the website www.24mx.co.uk was a site that the layout was most simliar to what they had visualised. It was clean and fresh.The TWS logo was already a black and white image, which represented the brand perfectly, and was main basis for the colour scheme,with splashes of colour to focus user for any Call to actions.
 ![24mx screenshot](media/24mxscreenshot.PNG)
 
+## Bootstrap 4
+Bootstrap 4 was used for the front-end for faster and easier web development, it ocntained feature that matched the disired outcomes such as the Grid system, Bootstrap also gives you the ability to easily create responsive designs, hower this can come at some compromises.
+
 ## Colour scheme
 TWS logo was black and white, and this was very much the brand, and fitted the target audience.
 
@@ -124,7 +127,54 @@ Have the ability to create a profile and update their address details, to improv
 Admin users are able to manage aspects of the website, with CRUD fucntionality for the products database.
 ![admin nav](media/navbar_admin.PNG)
 
+## Home Page 
+The home page is to be visually attractive, look proffesional, meet TWS owners deisgn requirements. Be easy to use and to highlight key areas of the website with CTA.
+![homepage](media/homepage.PNG)
 
+## Online Shop
+
+### Shop Landing screen
+At present the TWS owner only has 8 products for sale, so aspects like filtering and sorting and search seemed unecessary at this stage.
+These will be added as required. The shop is designed to show a quick preview of the product and its price, without bombarding the user with loads of information.Its designed to be a shop front.
+
+![shoplanding](media/shoplanding.PNG)
+
+### Product detail page
+A user can then click and view more details about the product, add the required quantities to the shopping bag.
+
+![product detail](media/productdetails.PNG)
+
+## Shopping bag
+Users are able to see the items in the shopping bag, increase, decrease or remove items. They also have the ability to apply any discount codes they may have before they proceed to the checkout. 
+![shoppingbag](media/shoppingbag.PNG)
+
+## Shopping bag - discount applied
+If a user applies a discount code, the shoppingn bag will adjust to show the total prior to the discount,the % percentage applied and code used. 
+
+![shoppingbag_discount](media/shoppingbag_discountapplied.PNG)
+
+## Checkout
+Free shipping is applied on orders over £100, otherwise a standard £3.99 shipping fee applies. If a discoutn code is used the calculation of free shipping is 
+applied based on discounted total. The checkout process will autocomplete the contact and delivery details for qa user with a profile created. Payment will be processed by Stripe.
+
+![checkout](media/checkout.PNG)
+
+## Registered Users
+Users with a profile created, are able to checkout quicker, and viewsummary details of previous orders, more importantly the order number in case they have queries.
+
+![checkout](media/myprofilewithordersummary.PNG)
+
+## Footer
+Footer is clean and simple with links to social media - Instagram and Facebook.
+![checkout](media/footer2.png)
+
+## Manage Shop (CRUD)
+A front end for adminstrators was added to make the management of the shop easier, and to provide the TWS owner with a more appealing GUI, that they could easily navigate and understand.
+
+
+
+
+### 
 
 
 # Testing 
