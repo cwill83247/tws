@@ -106,6 +106,26 @@ The font used was Montserrat, it is a very clean font, and with the use of weigh
 
 # Features
 
+## Header
+The header contains the company logo for tws and this is the most important aspect, so visitors to the site see th ebrand straight away.
+I have included the shopping cart and when images are added or removed the item total increases or decreases
+
+![header](media/header.PNG)
+
+## Navigation
+The navigation contains links ot the main areas of the site, the login, signup buttons adjust dependendant on if you are a guest
+### Guest user
+![guest nav](media/navbar.PNG)
+
+### registered user
+Have the ability to create a profile and update their address details, to improve the checkout process. We will also register there detials and use this to send out unique discount codes, special offers.
+![registered nav](media/navbar_registered.PNG)
+## admin user 
+Admin users are able to manage aspects of the website, with CRUD fucntionality for the products database.
+![admin nav](media/navbar_admin.PNG)
+
+
+
 
 # Testing 
 ## lightohose
