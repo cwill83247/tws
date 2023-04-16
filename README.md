@@ -76,6 +76,12 @@ Below is the intial mapping out of the Database structure, based on the requirem
 
 
 # Skeleton Plane - UX
+## Handrawn
+I roughly drew out the layout, and what i felt the site would look like, some images below.
+
+![home handdrawn](media/handdrawn_home.PNG)
+![checkout handrawn](media/checkouthandrdrawn.PNG)
+
 ## wireframes
 I created some inital wireframes for the main areas of the site, and would use these as a basis for the rest of my site.
 
@@ -85,9 +91,22 @@ I created some inital wireframes for the main areas of the site, and would use t
 
 
 # Surface Plane - UX
-## colour scheme
-## font choice
-## design choices 
+
+## Design Inspiration
+TWS Owner provided several websites that they like the look off, however the website www.24mx.co.uk was a site that the layout was most simliar to what they had visualised. It was clean and fresh.The TWS logo was already a black and white image, which represented the brand perfectly, and was main basis for the colour scheme,with splashes of colour to focus user for any Call to actions.
+![24mx screenshot](media/24mxscreenshot.PNG)
+
+## Colour scheme
+TWS logo was black and white, and this was very much the brand, and fitted the target audience.
+
+![colour pallete](media/maincolorpallete.PNG)
+
+## Typography
+The font used was Montserrat, it is a very clean font, and with the use of weights was able to emphasis areas on the website.
+
+# Features
+
+
 # Testing 
 ## lightohose
 ## css, html, JS, Python test
