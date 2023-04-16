@@ -256,6 +256,39 @@ tabletomarkdown - converting tables for readme file
 
 
 ## issues
+Below I have listed some of the issue I encountered and the resolution during my development
+
+### Published Stripe Secret Key 18/3/23
+Resolved: Within stripe expired the current key, created a new key and updated the environment variables.
+
+### Processing Payment with Stripe:
+Invalid value for stripe.confirmCardPayment intent secret: value should be a client secret of the form ${id}_secret_${secret}. You specified:
+
+Resolved: I was using the Environment variable client_secret_key, instead of the secret_key that gets created when a PaymentIntent with stripe is created.
+
+Processing Payment with Stripe:
+Stripe: Uncaught (in promise) TypeError: form.submit is not a function
+Submit button id in checkout.html  was different to the one in stripe_elements.js
+
+Broke Site and unsure why
+I hadn’t committed the changes,s o out of sequence. Used git restore to restore shoppingbag/contexts.py and discountcodes/views.py to recover to my last commit on these pages. 
+
+local variable 'intent' referenced before assignment
+Added the code - print(order_form.errors.as_data()) into checkout/views.py for troubleshooting within:
+else:
+            messages.error(request, 'There was an error with your form. \
+                Please double check your information.')
+            print(order_form.errors.as_data())    
+In console with line above shows 
+{'country': [ValidationError(['This field is required.'])]}
+ Updated checkout/forms.py to include the country field 
+
+SuspiciousOperation at /checkout/ on Heroku deployed site
+Attempted access to '/checkout/js/stripe_elements.js' denied.
+AWS related - 
+Leading forward slash caused my issue thanks to code institute tutor support
+
+
 
 # deployment
 
