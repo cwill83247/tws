@@ -166,15 +166,22 @@ Users with a profile created, are able to checkout quicker, and viewsummary deta
 
 ## Footer
 Footer is clean and simple with links to social media - Instagram and Facebook.
-![checkout](media/footer2.png)
+![checkout](media/footer2.PNG)
 
 ## Manage Shop (CRUD)
 A front end for adminstrators was added to make the management of the shop easier, and to provide the TWS owner with a more appealing GUI, that they could easily navigate and understand.
+![manageshop](media/manageshop.PNG)
 
+### Add Product(s) 
+![manageshop add](media/manageshop_create.PNG)
 
+### Edit Product details
+![manageshop edit](media/manageshop_edit.PNG)
 
-
-### 
+## Get in Touch
+A user can contact us this is then stored in a DB, future development will include when and who actioned, along with a front end to manage these queries.
+It was felt this is an easier way to manage messages coming into the site.
+![contactus](media/contactus.PNG)
 
 
 # Testing 
