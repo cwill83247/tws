@@ -184,13 +184,76 @@ It was felt this is an easier way to manage messages coming into the site.
 ![contactus](media/contactus.PNG)
 
 
-# Testing 
-## lightohose
-## css, html, JS, Python test
+# Testing
+This was a continual process throughout the develop,ment of the site, I checked after every commit functionilty of the element I havd just updated, and made sure had no impact on other areas of the site. I have also listed below key milestone type testgn that was carried out, such as user stories and validation.
 
-## Testing user stories  
+## Testing against user stories
+I walked thorugh the user stories to ensure the finished product met all of the requirments. 
+| ID | OUTCOME                                                                                                              | As A/An  | I need to be able to.                             | So that I can                                                                                       |
+| -- | -------------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| 1  | PASS - design is clear and easy to navigate and clearly prompts the brand                                            | Customer | Understand purpose of site quickly and clearly    | Decide if i am on the correct site and suits my needs                                               |
+| 2  | PASS - navigating the site is easy, and as products expand, filtering and sorting will be added.                     | Customer | Browse the site easily                            | Find products quickly and easily                                                                    |
+| 4  | PASS - products details are shown and are clear and easy to understand                                               | Customer | View detailed information about specific products | So I can see more details about the product, and a larger more detailed image.                      |
+| 5  | PASS - users of the site can easily add items to the bag                                                             | Customer | Add Items to shopping bag                         | Store these for purchase                                                                            |
+| 6  | PASS - users can easily adjust the quantities of items                                                               | Customer | Increase and decrease quantities easily           | So that i can quickly purchase more of same item, or reduce number of items                         |
+| 7  | PASS - users can easily see how much they are spending                                                               | Customer | See total of items in shopping bag                | Identify how much i am currently spending                                                           |
+| 8  | PASS  - users can easily remove items from the shopping bag                                                          | Customer | Remove items from shopping bag                    | In case decide no longer want these items                                                           |
+| 9  | PASS - user can easily checkout                                                                                      | Customer | Items purchasing, and total amount to pay         | Checkout quickly and easily                                                                         |
+| 10 | PASS - users have confirmation on screen order has been received, and is logged against profile for registered users | Customer | Pay for items securely                            | Have confidence that my order, and money is processed safely.                                       |
+| 11 | PASS customer can apply a valid discount code                                                                        | Customer | Add a voucher code                                | So that I can apply discount to my order                                                            |
+| 12 | PASS - users have confirmation on screen order has been received, and is logged against profile for registered users | Customer | Receive payment and order on screen feedback      | Confident that payment has been processed and order is being processed                              |
+| 14 | Pass - user can create a prpfile for storing details                                                                                                        | Customer | Register for an Account                           | So i can store my address details                                                                   |
+| 15 | PASS User user can login and out                                                                                                         | Customer | Login /Logout                                     | Keep my personal information secure                                                                 |
+| 16 | PASS - users can register and create a profile to store delivery information                                         | Customer | View My Profile                                   | View details I have stored with site                                                                |
+| 17 | PASS - users can edit their profile                                                                                  | Customer | Edit My Profile                                   | I can update my address for example                                                                 |
+| 20 | PASS - Administrators of the site can add products                                                                   | Admin    | Add Products                                      | Add new products to the website quickly and easily for customers to view                            |
+| 21 | PASS - Administrators of the site can edit products                                                                  |          | Edit Products                                     | Edit details of existing products, for example if other colours become available, or price changes. |
+| 22 | PASS - Administrators of the site can delete products                                                                | Admin    | Delete Products                                   | Remove products that no longer sell                                                                 |
 
-# technologies used
+## CSS, ,JS, Python test
+The Lighthouse, W3C Markup Validator, JSHint and the Lighthouse report were used to determine whether there were any errors in the code. I ensured standards were met in design, and also accessebility.
+
+W3C Markup Validator                  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+W3C CSS Validator
+Lighthouse report
+JS Hint
+
+## Lighthouse
+The site was run using the Google chrome lighthouse devleoper tool, to ensure it met accessebility standards and scored a minimum of 90
+
+![lighthouse](media/lighthouse.PNG)
+
+## Screen size testing
+Testing was carried out to ensure deisgn was repsoonsove and where needed media querys were added.
+
+common breakpoints used for widths of devices:
+* 320px — 480px: Mobile devices
+* 481px — 768px: iPads, Tablets
+* 769px — 1024px: Small screens, laptops
+as per - https://www.freecodecamp.org/news/css-media-queries-breakpoints-media-types-standard-resolutions-and-more/
+
+
+# Technologies 
+## Languages 
+Python, JavaScript, HTML, CSS 
+
+## DB Technology
+SQLite3 (development environment)
+ElephantSQL (Live Deployment)
+
+## Frameworks and packages
+Bootstrap - to aid building a repsonsive site
+DJANGO
+
+## Software tools
+Visio for creation of swimlanes and DB schema
+Adobe Fireworks - for ammending images, adjusting sizes
+Git - for verison control
+GitHub - to store files and verison history
+Balsamiq - for wireframe creation
+tabletomarkdown - converting tables for readme file
+
 
 ## issues
 
@@ -213,101 +276,3 @@ Tutor Assistance
 
 
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
-
-`python3 -m http.server`
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
-------
-
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
