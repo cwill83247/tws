@@ -1,4 +1,4 @@
-![CI logo](media/all-devices-black.png)
+![TWS Screens](media/all-devices-black.png)
 
 # TWS -Together we Shred
 
@@ -14,6 +14,14 @@ Together We Shred is a full stack e-commerce website built using Django, Python,
 It was developed for my final assignment to showcase the skills I have learnt during the Code Institute Level 5 Diploma course.
 The ecommerce site, had to meet, and represent the brand, be of high quality and have potential to be used to help improve TWS Owners business and increase ability to generate income. 
 
+## Audience
+
+* Guest - aimed at riders of Mountain bikes, Motocross riders, and the supporters in that area who are looking for a clothing brand.
+* Registered USers -returning vistors to the site who regularly purchase and are interested in exclusive discounts
+* Admin - admins being able to add, update prodcuts to shop with an easy interface.
+
+## Why ?
+The site was created to support my nephews new business - TWS (Together we Shred). I hoped it could help generate an income for him with, and with some further devleopment be a valuable part of his business.
 
 # Scope Plane - UX
 I have tried to plan the site, from a user perspective and administrative perspective. 
@@ -55,20 +63,31 @@ To enable me to develop a MVP, Focus of user stories was those with a priority o
 | 24 | Marketing        | Admin    | Understand shopping trends                        | So the brand can move with the times and produce more of the products customers want                | 3          |
 
 # Structure Plane - UX
+Below is a structure of the site I decided to use a swimlane approach, helped me identify areas of site that needed to be built first, and how the different functions for different users build on each other.
 
-## Site flow diagram 
-## table showing functions allowed for different roles  i. e registered user store address details, view past orders etc.. 
-## db schema
+![swimlane guest](media/swimlane_guest.PNG)
+![swimlane registers](media/swimlane_registered.PNG)
+![swimlane admin](media/swimlane_admin.PNG)
+
+## DB schema
+Below is the intial mapping out of the Database structure, based on the requirements identified. This was done to help me visualise how they interlink and primarark and foreign keys needed. It would also give me an opportunity to review and make future improvements. Some fields were added and not used, this was becuase my focus was on prpdcuing a Minimal Viable prpdcut to satisfy the course requirements, rather than a perfect solution at the 1st attempt. I felt including the fields would help me make these improvements quicker later on. 
+
+![db schema](media/dbschema.PNG)
 
 
 # Skeleton Plane - UX
 ## wireframes
+I created some inital wireframes for the main areas of the site, and would use these as a basis for the rest of my site.
+
+![home wireframe](media/home_wireframe.PNG)
+![shop wireframe](media/shop_wireframe.PNG)
+![productdetail wireframe](media/productdetail_wireframe.PNG)
+
 
 # Surface Plane - UX
 ## colour scheme
 ## font choice
 ## design choices 
-
 # Testing 
 ## lightohose
 ## css, html, JS, Python test
