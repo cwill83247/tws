@@ -276,10 +276,60 @@ Version control was achieved,by pushing any changes from local development envir
 * git push - to push them up to GitHub
 
 # Live Deployment
-Gipod and the SQlLite Db isnt available for live deplyoments so we used.
+Gipod and the SQlLite Db isnt available for live deployments so we used.
 * Heroku - Deployed Site
 * ElephantSQl - Deployed DB
 * AWS - Hosting images, and static content.
+
+## ElephantSQL
+1. Create an Account with [Elephant SQL](https://www.elephantsql.com/)
+2. Create New Instance
+3. Name your database
+4. Select Plan "TinyTurtle Free"
+5. Select Region "EU-West-1(Ireland)"
+6. Review and Create Instance
+7. copy url for your DB (need this for Heroku)
+
+## Heroku
+1. Create an Account with [Heroku](https://dashboard.heroku.com)
+2. Create a New App
+3. Select clostest region
+4. Create app
+5. Create Config variable for the DB_URl (copy and pasted earlier from ElephantSQL)
+
+## Gitpod preperation
+Preparation for linking gitpod, github, heroku and elephantsql when committing future changes.
+1. pip3 install dj_database_url==0.5.0
+2. pip3 install psycopg2
+3. pip3 freeze > requirments.txt
+4. settings.py import dj_database_url
+5. settings.py add comment out existing DB , and add in the ElephantSQl url - used to create intial DB
+6. python3 manage.py runserver to see we are connecting to the Live DB
+7. python3 manage.py migrate (created LiveDB)
+8. python3 manage.py createsuperuser -so we can access the new Live DB
+9. settings.py upage the DB section to include an IF statement for development DB or Live DB, using the environmnet variable created earlier in Heroku
+10. pip3 install gunicorn - will be our webserver
+11. pip3 freeze > requirments.txt
+12. Create a Procfile at root - web: gunicorn twsshop.wsgi:application
+13. settings.py add the heroku url to "Allowed_Hosts"
+14. git add. 
+15. git commit -m "Useful Message"
+16. git push
+
+## Heroku
+Enable git to push changes to live site
+1. In Heroku Dpeloy select GitHub
+2. Search for repository and link
+3. select enable automatic deployments
+
+### in gitpod
+1. git push heroku master
+### Heroku
+1. check under the activity tab if you can see a build being created.
+
+
+
+
 
 
 # Technologies 
@@ -287,8 +337,8 @@ Gipod and the SQlLite Db isnt available for live deplyoments so we used.
 Python, JavaScript, HTML, CSS 
 
 ## DB Technology
-SQLite3 (development environment)
-ElephantSQL (Live Deployment)
+* SQLite3 (development environment)
+* ElephantSQL (Live Deployment)
 
 ## Frameworks and packages
 Bootstrap - to aid building a responsive site
@@ -302,25 +352,27 @@ gunicorn - python web server
 Font awesome for font using CDN
 
 ## Platforms /Environments
-Gitpod - local development
-SQLite3 - locadevelopment
-Heroku - Live site hosting
-ElephantSQL - Live DB hosting
-Amazon Web Services - Live image/static content hosting
+* Gitpod - local development
+* SQLite3 - locadevelopment
+* Heroku - Live site hosting
+* ElephantSQL - Live DB hosting
+* Amazon Web Services - Live image/static content hosting
 
 ## Software tools
-Visio for creation of swimlanes and DB schema
-Adobe Fireworks - for ammending images, adjusting sizes
-Git - for verison control
-GitHub - to store files and verison history
-Balsamiq - for wireframe creation
-tabletomarkdown - converting tables for readme file
-GitPod - IDE for creation of code
-websitemockupgenerator.com - creating screen mockups for different devices. 
+* Visio for creation of swimlanes and DB schema
+* Adobe Fireworks - for ammending images, adjusting sizes
+* Git - for version control
+* GitHub - to store files and verison history
+* Balsamiq - for wireframe creation
+* tabletomarkdown - converting tables for readme file
+* GitPod - IDE for creation of code
+* websitemockupgenerator.com - creating screen mockups for different devices. 
 
 # Future Improvements
 
-## Add image Gallery Per Product so customers can view prpdcut in more detail prior to ordering.
+## Add image Gallery 
+Add a more images per product so customers can view products in more detail prior to ordering,
+or potentially add a 3D image.
 
 ## Stripe Faster Link
 Add: Include Stripes faster Link to make checkouts easier for customers 
