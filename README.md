@@ -412,22 +412,10 @@ Select to say you accept the wanring
 9. in Amazon bucket created earlier create a folder called "media" at same level as static folder
 10. Upload all of your images files for the site here.
 11. Grant public read access in Amazon AWS to the objects/images uploaded. 
-9. When vistnmg live URL images hsould pull though and CSS
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+12. When visiting live site URL images and CSS should display.
+13. Update Stripe keys in Heroku environment variables.
+14. Within Stripe create a webhook for the Heroku live site.
+  
 
 # Technologies 
 ## Languages 
