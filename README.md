@@ -213,19 +213,18 @@ I walked thorugh the user stories to ensure the finished product met all of the 
 | 22 | PASS - Administrators of the site can delete products                                                                | Admin    | Delete Products                                   | Remove products that no longer sell                                                                 |
 
 ## CSS, ,JS, Python test
-The Lighthouse, W3C Markup Validator, JSHint and the Lighthouse report were used to determine whether there were any errors in the code. I ensured standards were met in design, and also accessebility.
+Google Lighthouse via developer tools, W3C Markup Validator, JSHint and the Lighthouse report were used to determine whether there were any errors in the code. I ensured standards were met in design, and also ensure accessebility standards were met.
 
-W3C Markup Validator                  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-W3C CSS Validator
-Lighthouse report
-JS Hint
+![manageshop](media/w3c.png)
+Any errors identified were an accepted compromise, particualry with CSS and the use of Boostrap
 
 ## Lighthouse
 The site was run using the Google chrome lighthouse devleoper tool, to ensure it met accessebility standards and scored a minimum of 90
 
 ![lighthouse](media/lighthouse.PNG)
 
+## Flake 8
+Flake 8 was used to check the syntax, and ensure correct formatting of my Python code.
 ## Screen size testing
 Testing was carried out to ensure deisgn was repsoonsove and where needed media querys were added.
 
@@ -234,28 +233,6 @@ common breakpoints used for widths of devices:
 * 481px — 768px: iPads, Tablets
 * 769px — 1024px: Small screens, laptops
 as per - https://www.freecodecamp.org/news/css-media-queries-breakpoints-media-types-standard-resolutions-and-more/
-
-
-# Technologies 
-## Languages 
-Python, JavaScript, HTML, CSS 
-
-## DB Technology
-SQLite3 (development environment)
-ElephantSQL (Live Deployment)
-
-## Frameworks and packages
-Bootstrap - to aid building a repsonsive site
-DJANGO
-
-## Software tools
-Visio for creation of swimlanes and DB schema
-Adobe Fireworks - for ammending images, adjusting sizes
-Git - for verison control
-GitHub - to store files and verison history
-Balsamiq - for wireframe creation
-tabletomarkdown - converting tables for readme file
-
 
 ## issues
 Below I have listed some of the issue I encountered and the resolution during my development
@@ -268,12 +245,12 @@ Invalid value for stripe.confirmCardPayment intent secret: value should be a cli
 
 Resolved: I was using the Environment variable client_secret_key, instead of the secret_key that gets created when a PaymentIntent with stripe is created.
 
-Processing Payment with Stripe:
+### Processing Payment with Stripe:
 Stripe: Uncaught (in promise) TypeError: form.submit is not a function
 Submit button id in checkout.html  was different to the one in stripe_elements.js
 
-Broke Site and unsure why
-I hadn’t committed the changes,s o out of sequence. Used git restore to restore shoppingbag/contexts.py and discountcodes/views.py to recover to my last commit on these pages. 
+### Broke Site and unsure why
+I hadn’t committed the changes,so out of sequence. Used git restore to restore shoppingbag/contexts.py and discountcodes/views.py to recover to my last commit on these pages. 
 
 local variable 'intent' referenced before assignment
 Added the code - print(order_form.errors.as_data()) into checkout/views.py for troubleshooting within:
@@ -285,28 +262,91 @@ In console with line above shows
 {'country': [ValidationError(['This field is required.'])]}
  Updated checkout/forms.py to include the country field 
 
-SuspiciousOperation at /checkout/ on Heroku deployed site
+### SuspiciousOperation at /checkout/ on Heroku deployed site
 Attempted access to '/checkout/js/stripe_elements.js' denied.
 AWS related - 
 Leading forward slash caused my issue thanks to code institute tutor support
 
+# Version Control
+## Gitpod/Github
+Version control was achieved,by pushing any changes from local development environmnet gitpod, to Github, with regular and meaningful commit messages.
+* git add . to add all work to git
+* git add "specific filename" - can be used to add only a specific file, I personally used git add . 
+* git commit -m "% enter a meaningful message %" - to commit/save the changes
+* git push - to push them up to GitHub
+
+# Live Deployment
+Gipod and the SQlLite Db isnt available for live deplyoments so we used.
+* Heroku - Deployed Site
+* ElephantSQl - Deployed DB
+* AWS - Hosting images, and static content.
 
 
-# deployment
+# Technologies 
+## Languages 
+Python, JavaScript, HTML, CSS 
 
-# future devlelopments
+## DB Technology
+SQLite3 (development environment)
+ElephantSQL (Live Deployment)
 
-# credits and thanks 
-My Nephew(Rhys Railey)
-for allowing me to prpdcut this for his brand
+## Frameworks and packages
+Bootstrap - to aid building a responsive site
+DJANGO
+* django-allauth for authentication, registration, acocunt management
+* django-crispy-forms - render forms more quickly
+* django-storages - backend library for storage
+* pillow - imaging library
+* psycopg2 - postrgres db connector
+gunicorn - python web server
+Font awesome for font using CDN
 
-Code Institute
-Basis of project was from Task project as part of my CI course
+## Platforms /Environments
+Gitpod - local development
+SQLite3 - locadevelopment
+Heroku - Live site hosting
+ElephantSQL - Live DB hosting
+Amazon Web Services - Live image/static content hosting
 
-Spence Bariball (Mentor)
-Helping to keep me motivated, and being supportive throughout.
+## Software tools
+Visio for creation of swimlanes and DB schema
+Adobe Fireworks - for ammending images, adjusting sizes
+Git - for verison control
+GitHub - to store files and verison history
+Balsamiq - for wireframe creation
+tabletomarkdown - converting tables for readme file
+GitPod - IDE for creation of code
+websitemockupgenerator.com - creating screen mockups for different devices. 
 
-Tutor Assistance
+# Future Improvements
+
+## Add image Gallery Per Product so customers can view prpdcut in more detail prior to ordering.
+
+## Stripe Faster Link
+Add: Include Stripes faster Link to make checkouts easier for customers 
+https://stripe.com/docs/payments/accept-a-payment?platform=web&ui=elements#enable-checkout-link
+
+## Confirmation Email   (moved to essential)
+When webhook received order paid form Stripe, Send an e-mail to user confirming order  
+
+## Notifications
+Notifications to Admin when a user enquiry is submitted
+Notification to admin when order is submitted
+
+# Credits and Thanks 
+* My Nephew(Rhys Railey) for allowing me to produce this for his brand, and givng up his time to run through deisgn ideas
+* Linda and Jack - for supporting me and giving me the time to focus on the course
+* Code Institute - the basis of the site was achieved using the boutique_ado project and skills i had learnt through the course.
+* Code Institute Tutor support - were fantastic and really helped me, when had exhausted all other avenues
+* Django4 by example - for giving me a starting point for the discount code section.
+* 24mx.co.uk for the design inspiration 
+* Dennis Ivy youtube tutorials - helping me understand soem of the concepts in a different way https://www.youtube.com/watch?v=woORrr3QNh8&list=PL-51WBLyFTg0omnamUjL1TCVov7yDTRng&index=4
+* Sharma Coder - helping me understand the increase and decrease quantities - https://www.youtube.com/watch?v=YGpfWCaf4y4
+* Coleg y Cymoedd Slack group - during difficult times you knew that it wasnt just you.
+* Slack community a few of the issue I had bene documented which saved huge amounts of time. 
+
+# Conclusion
+Overall I am 80% happy with what I have achieved during my Milestone 4 project. I have taken the time to try and understand the concepts, and demonstrate that knowledge, I have tried to deviate away from the boutique_ado project which has often come at consequence often resulting in tutor support having difficulties identifying my issues, whilst at the time it was difficult has defintley improved my knowledge, it also helped bring to the for lacks of knowledge and forced me to revisit and understand properly such as "context processors". It was definitley a steep learning curve, and I hope to take these skills back into my workplace. 
 
 
 
