@@ -326,6 +326,103 @@ Enable git to push changes to live site
 1. git push heroku master
 ### Heroku
 1. check under the activity tab if you can see a build being created.
+now when you push changes this will go the the local and live environments.
+
+### Security Changes
+1. Set an Enviromnet variable for Debug - so debug only shows when in local environment
+2. Geneerate an new secret key for Django and the live environment variable in Heroku
+
+## Amazon Web Services
+
+1. Create a Free Tier Account at [Amazon AWS](https://aws.amazon.com/) 
+2. select or Search for S3
+3. Create a new bucket
+4. Enable static web hosting on the bucket created
+5. Copy the ARN (Amazon Resource Name) - will need this in a bit
+6. Click permissions tab
+7. Edit Bucket Policy using Policy Generator
+8. Type of Policy - S3 Bucket Policy
+9. Principal - *
+10. Actions - GetObject
+11. ARN - Paste in from earlier
+12. add /* at the end of the url in Resource 
+
+### Updating the CORS Configuration
+[
+    {
+        "AllowedHeaders": [
+            "Authorization"
+        ],
+        "AllowedMethods": [
+            "GET"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": []
+    }
+]
+
+### Enable Public Access
+Edit Access Control List(ACL) enable public access
+Select to say you accept the wanring
+
+### Amazon AWS User and Groups
+1. Search for IAM
+2. Create a Group
+3. Create a Policy using import managed policy import
+4. Select "AmazonS3FullAccess"
+5. Create Policy
+6. Attach policy to the group
+7. Create a user
+8. Add the user to the group
+9. Save the user access key, and the secret key
+
+## Linking Amazon AWS and Django
+
+### Gitpod
+1. pip3 install boto3
+2. pip3 install django-storages
+3. pip3 freeze > requirements.txt
+4. in settings.py add STORAGES
+5. in settings.py add
+>if 'USE_AWS' in os.environ:
+>    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=9460800',
+    }
+    
+    AWS_STORAGE_BUCKET_NAME = 'enter your bucket name here'
+    AWS_S3_REGION_NAME = 'enter the region you selected here'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+6. in settings. py add reference to AWS storage.
+    * STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    * STATICFILES_LOCATION = 'static'
+    * DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    * MEDIAFILES_LOCATION = 'media'
+    * DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    * STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    * MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+
+7. In Gitpod commit, and push changes
+8. in Heroku should see a build
+9. in Amazon bucket created earlier create a folder called "media" at same level as static folder
+10. Upload all of your images files for the site here.
+11. Grant public read access in Amazon AWS to the objects/images uploaded. 
+9. When vistnmg live URL images hsould pull though and CSS
+    
+
+
+
+
+
+
+
+
+
 
 
 
